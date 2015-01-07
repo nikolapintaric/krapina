@@ -10,8 +10,8 @@ public class LayerClass {
 		pos1 = 0.0;
 		pos2 = width;
 		width = 1400;
-		hegiht = 720;
-	} 
+		height = 720;
+	}
 
 	public void update(double dt){
 		pos1 -= speed * dt;
@@ -24,28 +24,4 @@ public class LayerClass {
 		// TODO: nacrtati ovdi
 	}
 
-}
-
-public class BackgroundClass {
-
-	public BackgroundClass(){
-		LayerClass layer;
-		layers.add(layer);
-	}
-
-	public void update(double dt){
-		for( int i = 0; i < layers.size(); i++ ){
-			layers[i].update(dt);
-		}
-	}
-
-	public void draw(){
-		for( int i = 0; i < layers.size(); i++ ){
-			layers[i].draw();
-		}
-	}
-
-	ArrayList<LayerClass> layers;
-
-//1280 720
 }
