@@ -13,14 +13,14 @@ public class LayerClass {
 		hegiht = 720;
 	} 
 
-	public update(double dt){
+	public void update(double dt){
 		pos1 -= speed * dt;
 		pos2 -= speed * dt;
 		if( pos1 + width < 0 ) pos1 += width * 2;
 		if( pos2 + width < 0 ) pos2 += width * 2;
 	}
 
-	public draw(){
+	public void draw(){
 		// TODO: nacrtati ovdi
 	}
 
@@ -33,13 +33,13 @@ public class BackgroundClass {
 		layers.add(layer);
 	}
 
-	public update(double dt){
+	public void update(double dt){
 		for( int i = 0; i < layers.size(); i++ ){
 			layers[i].update(dt);
 		}
 	}
 
-	public draw(){
+	public void draw(){
 		for( int i = 0; i < layers.size(); i++ ){
 			layers[i].draw();
 		}
