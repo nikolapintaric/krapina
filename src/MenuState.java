@@ -3,19 +3,20 @@
  */
 public class MenuState extends State {
 
+
     public MenuState() {
         super("MenuState");
     }
 
-    public init() {
+    public void init() {
 
     }
 
-    public update(double dt) {
-
+    public void update(double dt) {
+        System.out.println(name);
     }
 
-    public draw() {
+    public void draw() {
 
     }
 

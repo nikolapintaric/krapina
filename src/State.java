@@ -9,15 +9,15 @@ public class State {
         name = theName;
     }
 
-    public init() {
+    public void init() {
 
     }
 
-    public update(double dt) {
+    public void update(double dt) {
 
     }
 
-    public draw() {
+    public void draw() {
 
     }
 

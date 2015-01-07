@@ -7,15 +7,15 @@ public class GameState extends State {
         super("GameState");
     }
 
-    public init() {
+    public void init() {
 
     }
 
-    public update(double dt) {
-
+    public void update(double dt) {
+        System.out.println(name);
     }
 
-    public draw() {
+    public void draw() {
 
     }
 
