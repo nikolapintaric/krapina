@@ -7,6 +7,7 @@ public class VehiclePart extends DrawableEntity {
 
     public String type;
     public int w, h;
+    public int posx, posy;
 
     public VehiclePart() {
         super();

@@ -23,19 +23,24 @@ public class Vehicle extends MovableEntity {
     public boolean addPart(int x, int y, VehiclePart part) {
         for (int i = 0; i < part.w; ++i) {
             for (int j = 0; j < part.h; ++j) {
-                if (matrix[i][j] != null) {
+                if (matrix[i+x][j+y] != null) {
                     return false;
                 }
             }
         }
+
         for (int i = 0; i < part.w; ++i) {
             for (int j = 0; j < part.h; ++j) {
-                matrix[i][j] = part;
+                matrix[i+x][j+y] = part;
             }
         }
+        part.posx = x;
+        part.posy = y;
+
+        return true;
     }
 
-
+    public
 
 
 }
