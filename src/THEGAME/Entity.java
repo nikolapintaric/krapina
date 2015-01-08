@@ -8,18 +8,15 @@ import org.lwjgl.util.vector.Vector2f;
 public class Entity {
 
     public Vector2f position;
-    protected Quad sprite;
 
     public Entity() {
         position  = new Vector2f();
     }
 
     public void update(float dt){
-
     }
 
     public void draw(){
-        sprite.draw();
     }
 
 }
