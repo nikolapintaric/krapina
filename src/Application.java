@@ -41,6 +41,7 @@ public class Application {
             Display.update();
             Display.sync(60);
         }
+        Display.destroy();
     }
 
 
@@ -55,6 +56,10 @@ public class Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        glEnable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 
 

@@ -15,7 +15,7 @@ import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 
 
-public class Quad extends Entity{
+public class Quad extends MovableEntity{
 
 
 
@@ -25,7 +25,7 @@ public class Quad extends Entity{
         private int vboId, vaoId, vertexCount;
 
         public Quad(){
-            this(10, 10);
+            //this(10, 10);
         }
 
         public Quad(float x, float y){
@@ -60,8 +60,8 @@ public class Quad extends Entity{
         }
 
         public void addForce(float x, float y){
-            vel.x+=x;
-            vel.y+=y;
+            velocity.x+=x;
+            velocity.y+=y;
         }
 
         public void tick(){
@@ -69,8 +69,7 @@ public class Quad extends Entity{
         }
 
         public void draw(){
-            glTranslatef(pos.x + size.x/2, pos.y + size.y/2, 0);
-            glRotatef(rot, 0, 0, 1);
+            glTranslatef(position.x + size.x/2, position.y + size.y/2, 0);
             glTranslatef(-size.x/2, -size.y/2, 0);
 
             glBindVertexArray(vaoId);
@@ -84,8 +83,5 @@ public class Quad extends Entity{
             glLoadIdentity();
 
         }
-
-
-    }
 
 }

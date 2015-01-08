@@ -8,7 +8,8 @@ public class BackgroundClass {
         layers = new ArrayList<LayerClass>();
 		LayerClass layer = new LayerClass();
 		layers.add(layer);
-	}
+
+    }
 
 	public void update(double dt){
 		for( int i = 0; i < layers.size(); i++ ){
