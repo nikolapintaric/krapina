@@ -25,14 +25,17 @@ public class Emitter {
         lastParticle = System.nanoTime() / 1000000.0f;
         this.milisecondSpeed = milisecondSpeed;
         System.out.println("Emitter constructed");
+        for(int i=0; i<maxParticles; i++){
+            particles.add(new Particle(false, 0));
+        }
     }
 
     public void addParticle(Particle particle){
-/*        particles.set(firstFree, particle);
+
+        particles.set(firstFree, particle);
         firstFree++;
         if(firstFree == maxParticles - 1)
             firstFree = 0;
-*/
     }
 
     public void addAffector(Affector affector){
@@ -40,7 +43,6 @@ public class Emitter {
     }
 
     public void update(float dt){
-        System.out.println("update");
         for(Affector a:affectors){
             a.update(particles, dt);
         }
