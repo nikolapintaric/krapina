@@ -31,9 +31,8 @@ public class Application {
         // aktivni STATE ce biti zadnji dodani - game state
 
         // isprobavanje assetmanagera
-        AssetManager.addAsset(new TextureAsset("background", "backgorund.jpg"));
-        Asset ass = AssetManager.getAsset("background");
-        Debugger.log(ass.name);
+        AssetManager.addTexture("background", "res/background_2.png");
+        AssetManager.useTexture("background");
     }
 
     public void run() {
