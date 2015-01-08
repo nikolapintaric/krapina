@@ -10,7 +10,10 @@ public class BackgroundClass {
         layers = new ArrayList<LayerClass>();
 		LayerClass layer = new LayerClass(0);
 		LayerClass layer2 = new LayerClass(1);
+		LayerClass layer3 = new LayerClass(2);
 		layer2.setSpeed(30.0f);
+		layer3.setSpeed(10.0f);
+		layers.add(layer3);
 		layers.add(layer2);
 		layers.add(layer);
 
