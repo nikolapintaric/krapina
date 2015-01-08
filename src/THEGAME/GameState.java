@@ -13,7 +13,7 @@ public class GameState extends State {
 
     }
 
-    public void update(double dt) {
+    public void update(float dt) {
         BackgroundClass.update(dt);
     }
 
