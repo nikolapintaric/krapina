@@ -13,11 +13,7 @@ public class PropulsionModule extends VehicleModule {
         this.setTexture("wood-wheel", "res/wood_wheel.png");
     }
 
-    public void draw(){
-
-    }
-
     public void update(float dt){
-
+        rotation += 10 * dt;
     }
 }
