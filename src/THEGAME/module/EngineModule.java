@@ -5,7 +5,9 @@ package THEGAME.module;
  */
 public class EngineModule extends VehicleModule {
 
-    public float power, consumption;
+    public float consumption;
+    // consumption - fuel po sekundi
+    // power - kolicina... necega... po jedinici iskoristenog fuela
 
     EngineModule() {
         super();

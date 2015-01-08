@@ -5,7 +5,7 @@ package THEGAME.module;
  */
 public class FrameModule extends VehicleModule {
 
-    public float durability;
+    //public float durability;
 
     FrameModule() {
         super();
