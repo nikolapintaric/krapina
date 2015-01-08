@@ -1,5 +1,4 @@
-import jdk.nashorn.internal.runtime.Debug;
-import org.lwjgl.util.vector.Vector2f;
+package THEGAME;
 
 public class LayerClass {
 

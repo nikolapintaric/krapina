@@ -1,3 +1,5 @@
+package THEGAME;
+
 /**
  * Created by tonkosi on 07.01.15..
  */

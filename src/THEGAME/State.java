@@ -1,10 +1,14 @@
+package THEGAME;
+
 /**
  * Created by tonkosi on 07.01.15..
  */
-public class GameState extends State {
+public class State {
 
-    public GameState() {
-        super("GameState");
+    public String name = "";
+
+    public State(String theName) {
+        name = theName;
     }
 
     public void init() {
@@ -12,11 +16,12 @@ public class GameState extends State {
     }
 
     public void update(double dt) {
-        BackgroundClass.update(dt);
+
     }
 
     public void draw() {
-        BackgroundClass.draw();
+
     }
+
 
 }

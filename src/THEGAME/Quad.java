@@ -1,19 +1,12 @@
-/**
+package THEGAME; /**
  * Created by nikola on 08.01.15..
  */
 
 
 import java.io.IOException;
-import java.nio.FloatBuffer;
 
-import org.lwjgl.BufferUtils;
-
-import static org.lwjgl.opengl.GL30.*;
-import static org.lwjgl.opengl.GL20.*;
-import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL11.*;
 
-import org.lwjgl.util.Color;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;

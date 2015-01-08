@@ -1,4 +1,4 @@
-import sun.plugin.javascript.navig4.Layer;
+package THEGAME;
 
 import java.util.ArrayList;
 

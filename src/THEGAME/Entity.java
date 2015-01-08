@@ -1,3 +1,5 @@
+package THEGAME;
+
 import org.lwjgl.util.vector.Vector2f;
 
 /**
@@ -8,6 +10,7 @@ public class Entity {
     public Vector2f position;
 
     public Entity() {
+        position  = new Vector2f();
     }
 
 }

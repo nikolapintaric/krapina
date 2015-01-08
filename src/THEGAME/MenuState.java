@@ -1,12 +1,13 @@
+package THEGAME;
+
 /**
  * Created by tonkosi on 07.01.15..
  */
-public class State {
+public class MenuState extends State {
 
-    public String name = "";
 
-    public State(String theName) {
-        name = theName;
+    public MenuState() {
+        super("MenuState");
     }
 
     public void init() {
@@ -14,7 +15,7 @@ public class State {
     }
 
     public void update(double dt) {
-
+        System.out.println(name);
     }
 
     public void draw() {
