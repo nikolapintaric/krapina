@@ -20,9 +20,9 @@ public class ColorAffector extends Affector{
 
     public void update(ArrayList<DrawableEntity> particles, float dt){
         for(DrawableEntity p:particles)
-            p.color.set((int) (p.color.getRed() * colorMult.x * random.nextFloat() * randomMax)
-                    , (int) (p.color.getGreen() * colorMult.y * random.nextFloat() * randomMax)
-                    , (int) (p.color.getBlue() * colorMult.z * random.nextFloat() * randomMax));
+            p.color.set((int) (p.color.x * colorMult.x * random.nextFloat() * randomMax)
+                    , (int) (p.color.y * colorMult.y * random.nextFloat() * randomMax)
+                    , (int) (p.color.z * colorMult.z * random.nextFloat() * randomMax));
     }
 
 }
