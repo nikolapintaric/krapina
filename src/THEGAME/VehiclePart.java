@@ -3,7 +3,7 @@ package THEGAME;
 /**
  * Created by Kristijan on 8.1.2015..
  */
-public class VehiclePart extends StaticEntity {
+public class VehiclePart extends DrawableEntity {
 
     public String type;
 
