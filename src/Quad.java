@@ -26,7 +26,8 @@ public class Quad extends MovableEntity {
 
 
         public Vector2f size;
-        private Texture texture;
+        private Texture texture1, texture2;
+        public int tmp;
 
         private int vboId, vaoId, vertexCount;
 
@@ -47,7 +48,8 @@ public class Quad extends MovableEntity {
             };
 
             try {
-                texture = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/background.png"));
+                texture1 = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/background.png"));
+                texture2 = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/background_2.png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -100,8 +102,13 @@ public class Quad extends MovableEntity {
             glLoadIdentity();*/
 
 //           texture.bind();
-
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glEnable(GL_TEXTURE_2D);
+            if( tmp == 0 ){
+                glBindTexture(GL_TEXTURE_2D, texture1.getTextureID());
+            } else {
+                glBindTexture(GL_TEXTURE_2D, texture2.getTextureID());
+            }
+//            glColor3f(1.0f, 1.0f, 1.0f);
             glBegin(GL_TRIANGLE_FAN);
                 glVertex2f(0.0f, 0.0f);
                 glTexCoord2f(0.0f,0.0f);

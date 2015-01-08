@@ -10,17 +10,23 @@ public class LayerClass {
     private Quad quad1, quad2;
 
 
-    public LayerClass(){
+    public LayerClass( int x ){
 		speed = 100.0f;
-		width = 1400;
-		height = 720;
+		width = 1000.0f;
+		height = 500.0f;
 		pos1 = 0.0f;
-		pos2 = width;
+		pos2 = width - 0.1f;
 	    quad1 = new Quad(0, 0);
         quad2 = new Quad(0, 0);
         quad1.size.set(width, height);
         quad2.size.set(width, height);
+		quad1.tmp = x;
+		quad2.tmp = x;
     }
+
+	public void setSpeed(float _speed){
+		speed = _speed;
+	}
 
 	public void update(double dt){
 		pos1 -= speed * dt;

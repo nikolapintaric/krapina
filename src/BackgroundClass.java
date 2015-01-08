@@ -1,3 +1,5 @@
+import sun.plugin.javascript.navig4.Layer;
+
 import java.util.ArrayList;
 
 public class BackgroundClass {
@@ -6,7 +8,10 @@ public class BackgroundClass {
 
 	public static void init(){
         layers = new ArrayList<LayerClass>();
-		LayerClass layer = new LayerClass();
+		LayerClass layer = new LayerClass(0);
+		LayerClass layer2 = new LayerClass(1);
+		layer2.setSpeed(30.0f);
+		layers.add(layer2);
 		layers.add(layer);
 
     }

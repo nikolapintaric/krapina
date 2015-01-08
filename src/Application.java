@@ -46,7 +46,7 @@ public class Application {
         // ovo bi se kasnije moglo zamijeniti s while (window opened())
         // ili necim slicno tome
         while (!Display.isCloseRequested()) {
-            glClear(GL_COLOR_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             StateManager.getState().draw();
             StateManager.getState().update(1.0f / 60);
@@ -83,6 +83,7 @@ public class Application {
         glLoadIdentity();
         glOrtho(0, Krapina.width, 0, Krapina.height, 1, -1);
         glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
 
 
     }
