@@ -20,7 +20,7 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 
-public class Quad extends MovableEntity{
+public class Quad extends MovableEntity {
 
 
 
@@ -88,7 +88,6 @@ public class Quad extends MovableEntity{
             glPushMatrix();
             glTranslatef(position.x, position.y, 0);
 
-            System.out.println(position.x + " " + position.y );
 
             /*glBindVertexArray(vaoId);
             glEnableVertexAttribArray(0);
