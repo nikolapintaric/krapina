@@ -38,7 +38,15 @@ public class EventManager {
         }
 
         while (Keyboard.next()) {
-
+            if (Keyboard.getEventKeyState()) {
+                event.type = EventTypes.KEY_PRESSED;
+                event.keyCode = Keyboard.getEventKey();
+                return true;
+            } else {
+                event.type = EventTypes.KEY_RELEASED;
+                event.keyCode = Keyboard.getEventKey();
+                return true;
+            }
         }
         return false;
     }
