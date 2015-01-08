@@ -1,48 +1,52 @@
 package THEGAME;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class LayerClass {
 
-	public float speed;
-	public float width;
-	public float height;
-	public float pos1, pos2;
-	public float offset;
-    private Quad quad1, quad2;
+	private ArrayList<Entity> entities;
+	private float clean_cnt;
 
-
-    public LayerClass( int x ){
-		offset = 1.0f;
-		speed = 100.0f;
-		width = 1000.0f;
-		height = 500.0f;
-		pos1 = 0.0f;
-		pos2 = width - offset;
-	    quad1 = new Quad(0, 0);
-        quad2 = new Quad(0, 0);
-        quad1.size.set(width, height);
-        quad2.size.set(width, height);
-		quad1.tmp = x;
-		quad2.tmp = x;
+    public LayerClass(){
+		entities = new ArrayList<Entity>();
+		clean_cnt = 0.0f;
     }
 
-	public void setSpeed(float _speed){
-		speed = _speed;
-	}
-
-	public void update(double dt){
-		pos2 -= speed * dt;
-		pos1 -= speed * dt;
-		if( pos2 + width < 0 ) pos2 += width * 2 - offset;
-		if( pos1 + width < 0 ) pos1 += width * 2 - offset;
-        quad2.position.set(pos2, 0);
-        quad1.position.set(pos1, 0);
-		speed *= 1.001f;
+	public void update(float dt){
+		clean_cnt += dt;
+		if(clean_cnt > 1.0f){
+			clean_cnt = 0.0f;
+			clean();
+		}
+		for(int i = 0; i < entities.size(); i++){
+			entities.get(i).update(dt);
+		}
     }
-
 
 	public void draw(){
-        quad1.draw();
-        quad2.draw();
+		for(int i = 0; i < entities.size(); i++){
+			entities.get(i).draw();
+		}
     }
 
+	public void addEntity( Entity entity ){
+		addEntity(entity, -1);
+	}
+	public void addEntity( Entity entity, int position  ){
+		if( position == -1 ){
+			entities.add( entity );
+		} else {
+			entities.add( position, entity );
+		}
+	}
+
+	public void clean(){
+		ArrayList<Entity> entities_new = new ArrayList<Entity>();
+		for(int i = 0; i < entities.size(); i++){
+			if(entities.get(i) == null) continue;
+			entities_new.add(entities.get(i));
+		}
+		entities = entities_new;
+	}
 }
