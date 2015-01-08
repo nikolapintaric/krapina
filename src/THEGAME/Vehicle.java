@@ -3,18 +3,18 @@ package THEGAME;
 /**
  * Created by tonkosi on 08.01.15..
  */
-public class Vehicle extends Entity {
+public class Vehicle extends MovableEntity {
     //                      ---> MOVABLE ili STATIC ?!
 
     public static final int size = 15;
 
-    public Entity[][] matrix;
+    public VehiclePart[][] matrix;
 
     public Vehicle() {
         super();
-        matrix = new Entity[size + 1][];
+        matrix = new VehiclePart[size + 1][];
         for (int i = 0; i < size; ++i) {
-            matrix[i] = new Entity[size + 1];
+            matrix[i] = new VehiclePart[size + 1];
         }
 
         for (int i = 0; i < size; ++i) {
