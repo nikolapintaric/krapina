@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import org.lwjgl.util.Color;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -16,16 +17,23 @@ import org.newdawn.slick.util.ResourceLoader;
 public class DrawableEntity extends MovableEntity {
 
         public Vector2f size;
+        public Color color;
         private String textureName;
+
 
         public DrawableEntity(){
             size = new Vector2f(0.0f, 0.0f);
         }
 
-        public DrawableEntity(float x, float y){
-            size = new Vector2f(x, y);
-            position = new Vector2f(0, 0);
+        public DrawableEntity(Vector2f pos, Vector2f size){
+            this.size = size;
+            position = pos;
         }
+
+        public DrawableEntity(Vector2f pos){
+            position = pos;
+        }
+
 
         public void setTexture(String _textureName, String texturePath){
             textureName = _textureName;
