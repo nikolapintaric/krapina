@@ -1,0 +1,20 @@
+package THEGAME.module;
+
+import THEGAME.DrawableEntity;
+
+/**
+ * Created by Kristijan on 8.1.2015..
+ */
+public class VehicleModule extends DrawableEntity {
+
+    public String type;
+    public int w, h;
+    public int posx, posy;
+
+    public VehicleModule() {
+        super();
+        type = new String();
+    }
+
+
+}
