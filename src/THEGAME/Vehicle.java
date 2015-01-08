@@ -40,7 +40,18 @@ public class Vehicle extends MovableEntity {
         return true;
     }
 
-    public
+    public void removePart(int x, int y) {
+        // jel ovo radi?
+        x = matrix[x][y].posx;
+        y = matrix[x][y].posy;
+        int w = matrix[x][y].w;
+        int h = matrix[x][y].h;
+        for (int i = 0; i < w; ++i) {
+            for (int j = 0; j < h; ++j) {
+                matrix[x+i][y+j] = null;
+            }
+        }
+    }
 
 
 }
