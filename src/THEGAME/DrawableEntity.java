@@ -13,19 +13,23 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 
-public class Quad extends MovableEntity {
+public class DrawableEntity extends MovableEntity {
 
         public Vector2f size;
-        private String texture;
+        private String textureName;
 
-        private int vboId, vaoId, vertexCount;
-
-        public Quad(){
+        public DrawableEntity(){
+            size = new Vector2f(0.0f, 0.0f);
         }
 
-        public Quad(float x, float y){
+        public DrawableEntity(float x, float y){
             size = new Vector2f(x, y);
             position = new Vector2f(0, 0);
+        }
+
+        public void setTexture(String _textureName, String texturePath){
+            textureName = _textureName;
+            AssetManager.addTexture(textureName, texturePath);
         }
 
         public void addForce(float x, float y){
@@ -34,12 +38,16 @@ public class Quad extends MovableEntity {
         }
 
         public void draw(){
+            if( textureName == "" ){
+                System.out.println("No texture set");
+                return;
+            }
+
             glPushMatrix();
             glTranslatef(position.x, position.y, 0);
 
             glEnable(GL_TEXTURE_2D);
-                //TODO: call use texture
-                //glBindTexture(GL_TEXTURE_2D, texture2.getTextureID());
+            AssetManager.useTexture(textureName);
 
             glBegin(GL_TRIANGLE_FAN);
                 glVertex2f(0.0f, 0.0f);

@@ -4,22 +4,30 @@ import java.util.ArrayList;
 
 public class BackgroundClass {
 
-    private static ArrayList<LayerClass> layers;
+    private static LayerClass layer;
 
 	public static void init(){
-        layers = new ArrayList<LayerClass>();
+        layer = new LayerClass();
+		DrawableEntity entity = new DrawableEntity();
+		entity.setTexture("backgorund3", "res/background_3.png");
+		entity.size.set(1024.0f, 512.0f);
+		layer.addEntity(entity);
+		entity = new DrawableEntity();
+		entity.setTexture("background2", "res/background_2.png");
+		entity.size.set(1024.0f, 512.0f);
+		layer.addEntity(entity);
+		entity = new DrawableEntity();
+		entity.setTexture("background", "res/background.png");
+		entity.size.set(1024.0f, 512.0f);
+		layer.addEntity(entity);
     }
 
 	public static void update(float dt){
-		for( int i = 0; i < layers.size(); i++ ){
-			layers.get(i).update(dt);
-		}
+		layer.update(dt);
 	}
 
 	public static void  draw(){
-        for( int i = 0; i < layers.size(); i++ ){
-			layers.get(i).draw();
-		}
+		layer.draw();
 	}
 
 //1280 720
