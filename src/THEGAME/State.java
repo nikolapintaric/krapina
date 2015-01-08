@@ -15,7 +15,7 @@ public class State {
 
     }
 
-    public void update(double dt) {
+    public void update(float dt) {
 
     }
 

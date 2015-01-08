@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import org.lwjgl.util.Color;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
@@ -15,6 +16,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class DrawableEntity extends MovableEntity {
 
+<<<<<<< HEAD
     private String textureName;
 
     public DrawableEntity(){
@@ -40,6 +42,35 @@ public class DrawableEntity extends MovableEntity {
         if( textureName == "" ){
             System.out.println("No texture set");
             return;
+=======
+        public Vector2f size;
+        public Color color;
+        private String textureName;
+
+
+        public DrawableEntity(){
+            size = new Vector2f(0.0f, 0.0f);
+        }
+
+        public DrawableEntity(Vector2f pos, Vector2f size){
+            this.size = size;
+            position = pos;
+        }
+
+        public DrawableEntity(Vector2f pos){
+            position = pos;
+        }
+
+
+        public void setTexture(String _textureName, String texturePath){
+            textureName = _textureName;
+            AssetManager.addTexture(textureName, texturePath);
+        }
+
+        public void addForce(float x, float y){
+            velocity.x+=x;
+            velocity.y+=y;
+>>>>>>> 9e0d2e6715890a3be3dda187dd3ed1156979ad80
         }
 
         glPushMatrix();

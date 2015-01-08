@@ -38,7 +38,7 @@ public class EventManager {
         }
 
         while (Keyboard.next()) {
-            
+
         }
         return false;
     }
