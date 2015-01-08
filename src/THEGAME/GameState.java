@@ -28,4 +28,8 @@ public class GameState extends State {
         emitter.draw();
     }
 
+    public void handleEvent(EventData event) {
+        System.out.println("EVENT DATA DOLAZI U GRAD: " + event.type);
+    }
+
 }

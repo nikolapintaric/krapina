@@ -44,6 +44,10 @@ public class Emitter {
     }
 
     public void update(float dt){
+<<<<<<< HEAD
+=======
+        //System.out.println("update");
+>>>>>>> e83e5d4c93b22441ba74431bf2a26c87fda62982
         for(Affector a:affectors){
             a.update(particles, dt);
         }
