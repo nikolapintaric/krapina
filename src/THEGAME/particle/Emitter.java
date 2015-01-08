@@ -2,6 +2,7 @@ package THEGAME.particle;
 
 import THEGAME.DrawableEntity;
 import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector3f;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class Emitter {
         this.pos = pos;
         lastParticle = System.nanoTime() / 1000000.0f;
         this.milisecondSpeed = milisecondSpeed;
+        System.out.println("Emitter constructed");
     }
 
     public void addParticle(Particle particle){
@@ -38,12 +40,19 @@ public class Emitter {
     }
 
     public void update(float dt){
+        System.out.println("update");
         for(Affector a:affectors){
             a.update(particles, dt);
         }
         if(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
             lastParticle = System.nanoTime() / 1000000.0f;
-            addParticle(new Particle(pos));
+            addParticle(new Particle(pos, new Vector3f(1.0f, 0.0f, 0.0f)));
+        }
+    }
+
+    public void draw(){
+        for(DrawableEntity en:particles){
+            en.drawPoint();
         }
     }
 

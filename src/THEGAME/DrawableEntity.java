@@ -9,6 +9,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 import org.lwjgl.util.Color;
 import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector3f;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -17,23 +18,29 @@ import org.newdawn.slick.util.ResourceLoader;
 public class DrawableEntity extends MovableEntity {
 
         public Vector2f size;
-        public Color color;
-        private String textureName;
+        public Vector3f color;
+        private String textureName="";
 
 
         public DrawableEntity(){
-            size = new Vector2f(0.0f, 0.0f);
+            this(new Vector2f(0.0f, 0.0f));
         }
 
-        public DrawableEntity(Vector2f pos, Vector2f size){
+        public DrawableEntity(Vector2f pos, Vector2f size, Vector3f color){
+            this(pos, size, color, new Vector2f(0.0f, 0.0f));
+        }
+
+        public DrawableEntity(Vector2f pos, Vector2f size, Vector3f color, Vector2f vel){
+            super();
+            this.velocity = vel;
             this.size = size;
-            position = pos;
+            this.position = pos;
+            this.color = color;
         }
 
         public DrawableEntity(Vector2f pos){
-            position = pos;
+            this(pos, new Vector2f(0.0f, 0.0f), new Vector3f(1.0f, 1.0f, 1.0f));
         }
-
 
         public void setTexture(String _textureName, String texturePath){
             textureName = _textureName;
@@ -57,6 +64,8 @@ public class DrawableEntity extends MovableEntity {
             glEnable(GL_TEXTURE_2D);
             AssetManager.useTexture(textureName);
 
+            glColor3f(color.x, color.y, color.z);
+
             glBegin(GL_TRIANGLE_FAN);
                 glVertex2f(0.0f, 0.0f);
                 glTexCoord2f(0.0f,0.0f);
@@ -70,6 +79,18 @@ public class DrawableEntity extends MovableEntity {
 
             glDisable(GL_TEXTURE_2D);
             glPopMatrix();
+        }
+
+        public void drawPoint(){
+            glPushMatrix();
+            glTranslatef(position.x, position.y, 0);
+
+            glColor3f(color.x, color.y, color.z);
+
+            glBegin(GL_POINTS);
+                glVertex2f(position.x, position.y);
+
+
         }
 
 }

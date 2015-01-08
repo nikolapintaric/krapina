@@ -11,18 +11,21 @@ public class GameState extends State {
 
     public GameState() {
         super("GameState");
+        init();
     }
 
     public void init() {
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 10);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 100);
     }
 
     public void update(float dt) {
         BackgroundClass.update(dt);
+        emitter.update(dt);
     }
 
     public void draw() {
         BackgroundClass.draw();
+        emitter.draw();
     }
 
 }
