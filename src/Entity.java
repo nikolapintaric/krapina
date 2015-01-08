@@ -8,7 +8,6 @@ public class Entity {
     public Vector2f position;
 
     public Entity() {
-        BackgroundClass.draw();
     }
 
 }

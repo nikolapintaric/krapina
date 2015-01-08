@@ -12,11 +12,11 @@ public class GameState extends State {
     }
 
     public void update(double dt) {
-        System.out.println(name);
+        BackgroundClass.update(dt);
     }
 
     public void draw() {
-
+        BackgroundClass.draw();
     }
 
 }
