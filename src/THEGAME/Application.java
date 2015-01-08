@@ -1,6 +1,7 @@
 package THEGAME;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
@@ -47,10 +48,26 @@ public class Application {
         // ovo bi se kasnije moglo zamijeniti s while (window opened())
         // ili necim slicno tome
         while (!Display.isCloseRequested()) {
+
+
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             StateManager.getState().draw();
             StateManager.getState().update(1.0f / 60);
+/*
+            while (Mouse.next()) {
+                if (Mouse.getEventButtonState()) {
+                    if (Mouse.getEventButton() == 0) System.out.println("left pressed");
+                }else{
+                    if (Mouse.getEventButton() == 0) System.out.printf("left released");
+                }
+                if (Mouse.getEventDX() == 0 || Mouse.getEventDY() == 0) System.out.println(Mouse.getEventX());
+            }*/
+
+            EventData event = new EventData();
+            while (EventManager.pollEvent(event)) {
+                System.out.println(event.type + " " + event.x);
+            }
 
             /*BackgroundClass.draw();
             BackgroundClass.update( 1.0f/60 );
