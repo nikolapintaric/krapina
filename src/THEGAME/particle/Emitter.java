@@ -3,6 +3,7 @@ package THEGAME.particle;
 import THEGAME.DrawableEntity;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class Emitter {
         }
         if(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
             lastParticle = System.nanoTime() / 1000000.0f;
-            addParticle(new Particle(pos, new Vector3f(1.0f, 0.0f, 0.0f)));
+            addParticle(new Particle(pos, new Vector4f(1.0f, 0.0f, 0.0f, 1.0f)));
         }
     }
 
