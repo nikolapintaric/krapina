@@ -1,15 +1,17 @@
-package THEGAME;
+package THEGAME.module;
+
+import THEGAME.DrawableEntity;
 
 /**
  * Created by Kristijan on 8.1.2015..
  */
-public class VehiclePart extends DrawableEntity {
+public class VehicleModule extends DrawableEntity {
 
     public String type;
     public int w, h;
     public int posx, posy;
 
-    public VehiclePart() {
+    public VehicleModule() {
         super();
         type = new String();
     }
