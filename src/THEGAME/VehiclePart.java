@@ -6,10 +6,12 @@ package THEGAME;
 public class VehiclePart extends DrawableEntity {
 
     public String type;
+    public int w, h;
 
     public VehiclePart() {
         super();
         type = new String();
     }
+
 
 }
