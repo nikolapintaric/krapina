@@ -8,6 +8,7 @@ import org.lwjgl.util.vector.Vector2f;
 public class Entity {
 
     public Vector2f position;
+    public Vector2f size;
 
     public Entity() {
         position  = new Vector2f();
