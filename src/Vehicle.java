@@ -14,7 +14,15 @@ public class Vehicle extends Entity {
         for (int i = 0; i < size; ++i) {
             matrix[i] = new Entity[size + 1];
         }
+
+        for (int i = 0; i < size; ++i) {
+            for (int j = 0; j < size; ++j) {
+
+            }
+        }
     }
+
+
 
 
 
