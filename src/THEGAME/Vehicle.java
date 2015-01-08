@@ -2,6 +2,8 @@ package THEGAME;
 
 import THEGAME.module.VehicleModule;
 
+import java.util.ArrayList;
+
 /**
  * Created by tonkosi on 08.01.15..
  */
@@ -11,6 +13,7 @@ public class Vehicle extends MovableEntity {
     public static final int size = 15;
 
     public VehicleModule[][] matrix;
+    public ArrayList<VehicleModule> modules;
 
     public Vehicle() {
         super();
@@ -39,6 +42,8 @@ public class Vehicle extends MovableEntity {
         part.posx = x;
         part.posy = y;
 
+        modules.add(part);
+
         return true;
     }
 
@@ -46,6 +51,10 @@ public class Vehicle extends MovableEntity {
         // jel ovo radi?
         x = matrix[x][y].posx;
         y = matrix[x][y].posy;
+
+        // I don't even know...
+        modules.remove(matrix[x][y]);
+
         int w = matrix[x][y].w;
         int h = matrix[x][y].h;
         for (int i = 0; i < w; ++i) {
@@ -55,5 +64,16 @@ public class Vehicle extends MovableEntity {
         }
     }
 
-
+    public float mass, power;
+    /*
+    // such random very idk
+    public void calculateVelocity() {
+        mass = power = 0.0f;
+        for (VehicleModule m: modules) {
+            mass += m.mass;
+            power += m.power;
+        }
+        velocity = power / mass;
+    }
+    */
 }
