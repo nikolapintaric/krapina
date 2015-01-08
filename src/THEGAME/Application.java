@@ -53,21 +53,16 @@ public class Application {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             StateManager.getState().draw();
-            StateManager.getState().update(1.0f / 60);
-/*
-            while (Mouse.next()) {
-                if (Mouse.getEventButtonState()) {
-                    if (Mouse.getEventButton() == 0) System.out.println("left pressed");
-                }else{
-                    if (Mouse.getEventButton() == 0) System.out.printf("left released");
-                }
-                if (Mouse.getEventDX() == 0 || Mouse.getEventDY() == 0) System.out.println(Mouse.getEventX());
-            }*/
 
             EventData event = new EventData();
             while (EventManager.pollEvent(event)) {
-                System.out.println(event.type + " " + event.x);
+                //System.out.println(event.type + " " + event.keyCode);
+                StateManager.getState().handleEvent(event);
             }
+
+
+            StateManager.getState().update(1.0f / 60);
+
 
             /*BackgroundClass.draw();
             BackgroundClass.update( 1.0f/60 );

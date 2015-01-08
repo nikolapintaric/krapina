@@ -1,5 +1,7 @@
 package THEGAME;
 
+import java.awt.*;
+
 /**
  * Created by tonkosi on 07.01.15..
  */
@@ -20,6 +22,10 @@ public class State {
     }
 
     public void draw() {
+
+    }
+
+    public void handleEvent(EventData event) {
 
     }
 

@@ -40,7 +40,7 @@ public class Emitter {
     }
 
     public void update(float dt){
-        System.out.println("update");
+        //System.out.println("update");
         for(Affector a:affectors){
             a.update(particles, dt);
         }
