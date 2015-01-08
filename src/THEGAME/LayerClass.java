@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class LayerClass {
 
-	private ArrayList<Entity> entities;
+	private ArrayList<DrawableEntity> entities;
 	private float clean_cnt;
 
     public LayerClass(){
-		entities = new ArrayList<Entity>();
+		entities = new ArrayList<DrawableEntity>();
 		clean_cnt = 0.0f;
     }
 
@@ -30,10 +30,10 @@ public class LayerClass {
 		}
     }
 
-	public void addEntity( Entity entity ){
+	public void addEntity( DrawableEntity entity ){
 		addEntity(entity, -1);
 	}
-	public void addEntity( Entity entity, int position  ){
+	public void addEntity( DrawableEntity entity, int position  ){
 		if( position == -1 ){
 			entities.add( entity );
 		} else {
@@ -42,7 +42,7 @@ public class LayerClass {
 	}
 
 	public void clean(){
-		ArrayList<Entity> entities_new = new ArrayList<Entity>();
+		ArrayList<DrawableEntity> entities_new = new ArrayList<DrawableEntity>();
 		for(int i = 0; i < entities.size(); i++){
 			if(entities.get(i) == null) continue;
 			entities_new.add(entities.get(i));

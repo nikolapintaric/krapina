@@ -9,6 +9,7 @@ public class MovableEntity extends Entity {
 
     public Vector2f velocity;
     public Vector2f acceleration;
+    public float rotation;
 
     public MovableEntity() {
         super();
