@@ -12,6 +12,7 @@ public class VehicleModule extends DrawableEntity {
     public int posx, posy;
 
     // atributi
+    public float mass, power;
     //public float heat, heatRate;
 
     public VehicleModule() {
