@@ -17,18 +17,20 @@ public class Application {
     }
 
     public void init() {
+        SetUpGL();
         mStateManager = new StateManager();
         mStateManager.pushState(new MenuState());
         mStateManager.pushState(new GameState());
 
         // po DEFAULTU je selektiran ZADNJI dodani state
         mStateManager.changeState("MenuState");
+
+        BackgroundClass.init();
     }
 
     public void run() {
         System.out.println("kaj ima njofra");
         mStateManager.getState().update(1);
-        SetUpGL();
         loop();
     }
 
@@ -37,6 +39,9 @@ public class Application {
         // ili necim slicno tome
         while (!Display.isCloseRequested()) {
             glClear(GL_COLOR_BUFFER_BIT);
+
+            BackgroundClass.draw();
+            BackgroundClass.update( 1.0f/60 );
 
             Display.update();
             Display.sync(60);
@@ -64,7 +69,8 @@ public class Application {
 
 
         glMatrixMode(GL_PROJECTION);
-        glOrtho(0, Krapina.width, 0, Krapina.height, -1, 1);
+        glLoadIdentity();
+        glOrtho(0, Krapina.width, 0, Krapina.height, 1, -1);
         glMatrixMode(GL_MODELVIEW);
 
 

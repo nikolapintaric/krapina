@@ -10,27 +10,31 @@ public class LayerClass {
 
 
     public LayerClass(){
-		speed = 1.0f;
-		pos1 = 0.0f;
-		pos2 = width;
+		speed = 100.0f;
 		width = 1400;
 		height = 720;
-	    quad1 = new Quad();
-        quad2 = new Quad();
+		pos1 = 0.0f;
+		pos2 = width;
+	    quad1 = new Quad(0, 0);
+        quad2 = new Quad(0, 0);
+        quad1.size.set(width, height);
+        quad2.size.set(width, height);
     }
 
 	public void update(double dt){
+        System.out.println("lolololololololololol");
 		pos1 -= speed * dt;
 		pos2 -= speed * dt;
 		if( pos1 + width < 0 ) pos1 += width * 2;
 		if( pos2 + width < 0 ) pos2 += width * 2;
         quad1.position.set(pos1, 0);
         quad2.position.set(pos2, 0);
+        System.out.println(pos1 + " " + pos2);
     }
 
 
 	public void draw(){
-	    quad1.draw();
+        quad1.draw();
         quad2.draw();
     }
 

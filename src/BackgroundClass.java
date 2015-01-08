@@ -2,23 +2,24 @@ import java.util.ArrayList;
 
 public class BackgroundClass {
 
-    private ArrayList<LayerClass> layers;
+    private static ArrayList<LayerClass> layers;
 
-	public BackgroundClass(){
+	public static void init(){
         layers = new ArrayList<LayerClass>();
 		LayerClass layer = new LayerClass();
 		layers.add(layer);
 
     }
 
-	public void update(double dt){
+	public static void update(double dt){
 		for( int i = 0; i < layers.size(); i++ ){
 			layers.get(i).update(dt);
 		}
 	}
 
-	public void draw(){
-		for( int i = 0; i < layers.size(); i++ ){
+	public static void  draw(){
+        System.out.println(123);
+        for( int i = 0; i < layers.size(); i++ ){
 			layers.get(i).draw();
 		}
 	}
