@@ -28,11 +28,11 @@ public class Emitter {
     }
 
     public void addParticle(Particle particle){
-        particles.set(firstFree, particle);
+/*        particles.set(firstFree, particle);
         firstFree++;
         if(firstFree == maxParticles - 1)
             firstFree = 0;
-
+*/
     }
 
     public void addAffector(Affector affector){
