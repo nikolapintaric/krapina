@@ -11,4 +11,5 @@ public class VehiclePart extends StaticEntity {
         super();
         type = new String();
     }
+
 }
