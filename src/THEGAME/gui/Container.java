@@ -1,4 +1,4 @@
-package THEGAME.particle;
+package THEGAME.gui;
 
 import THEGAME.DrawableEntity;
 import static org.lwjgl.opengl.GL11.*;
@@ -6,7 +6,6 @@ import static org.lwjgl.opengl.GL11.*;
 import THEGAME.EventData;
 import THEGAME.EventTypes;
 import org.lwjgl.util.vector.Vector2f;
-import sun.java2d.pipe.hw.AccelDeviceEventNotifier;
 
 import java.util.ArrayList;
 
