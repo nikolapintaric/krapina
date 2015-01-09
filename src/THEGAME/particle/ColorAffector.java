@@ -18,11 +18,16 @@ public class ColorAffector extends Affector{
 
     }
 
+    public ColorAffector(float randMax){
+        this();
+        this.randomMax = randMax;
+    }
+
     public void update(ArrayList<DrawableEntity> particles, float dt){
         for(DrawableEntity p:particles)
-            p.color.set((int) (p.color.x * colorMult.x * random.nextFloat() * randomMax)
-                    , (int) (p.color.y * colorMult.y * random.nextFloat() * randomMax)
-                    , (int) (p.color.z * colorMult.z * random.nextFloat() * randomMax));
+            p.color.set((int) (p.color.x * colorMult.x * rand())
+                    , (int) (p.color.y * colorMult.y * rand())
+                    , (int) (p.color.z * colorMult.z * rand()), 1.0f);
     }
 
 }
