@@ -8,6 +8,8 @@ import THEGAME.particle.Emitter;
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 
+import java.awt.event.MouseAdapter;
+
 /**
  * Created by tonkosi on 07.01.15..
  */
@@ -29,7 +31,7 @@ public class GameState extends State {
 
         VehicleModule tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 0, 0);
         vehicle.addModule(tmp);
-        tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 1, 1);
+        tmp = ModuleFactory.createModule(ModuleEnum.ENGINEMODULE, 1, 1);
         vehicle.addModule(tmp);
         tmp = ModuleFactory.createModule(ModuleEnum.FUELMODULE, 0, 1);
         vehicle.addModule(tmp);

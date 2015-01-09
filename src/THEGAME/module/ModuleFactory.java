@@ -25,7 +25,7 @@ public class ModuleFactory {
 
         tmp.posx = _x; tmp.posy = _y;
         tmp.position.set( VehicleModule.moduleW * tmp.posx, VehicleModule.moduleH * tmp.posy );
-        tmp.size.set( VehicleModule.moduleW, VehicleModule.moduleH );
+        tmp.size.set( VehicleModule.moduleW * tmp.w, VehicleModule.moduleH * tmp.h );
 
         return tmp;
     }
