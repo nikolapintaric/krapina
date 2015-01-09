@@ -25,7 +25,7 @@ public class Emitter {
         affectors = new ArrayList<Affector>();
         this.position = position;
         position.y += 100;
-        lastParticle = System.nanoTime() / 1000000.0f;
+        lastParticle = 0.0f;
         this.milisecondSpeed = milisecondSpeed;
         System.out.println("Emitter constructed");
         random = new Random();
@@ -56,8 +56,9 @@ public class Emitter {
         for(Affector a:affectors){
             a.update(particles, dt);
         }
-        while(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
-            lastParticle = lastParticle + milisecondSpeed;
+        lastParticle += dt * 1000;
+        while(lastParticle > milisecondSpeed){
+            lastParticle -= milisecondSpeed;
             addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 3, random.nextFloat() * 10), true, 5.0f));
         }
     }
