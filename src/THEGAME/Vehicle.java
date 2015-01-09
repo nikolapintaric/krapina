@@ -64,6 +64,12 @@ public class Vehicle extends MovableEntity {
         }
     }
 
+    public void update(float dt){
+        for(int i = 0; i < modules.size(); i++){
+            modules.get(i).update(dt);
+        }
+    }
+
     public float mass, power;
     /*
     // such random very idk
