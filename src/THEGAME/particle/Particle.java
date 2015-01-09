@@ -13,7 +13,6 @@ import org.lwjgl.util.vector.Vector4f;
 public class Particle extends DrawableEntity{
     public float decay;
     public boolean alive;
-
     public Particle(Vector2f pos, Vector4f color){
         this(pos, color, new Vector2f(0.0f, 0.0f), true, 10);
     }
@@ -28,7 +27,6 @@ public class Particle extends DrawableEntity{
 
     public void draw(){
         if(!alive) return;
-        Helper.print(position);
         this.drawPoint();
     }
 

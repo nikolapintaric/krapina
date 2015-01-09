@@ -58,7 +58,6 @@ public class DrawableEntity extends MovableEntity {
     }
 
     public void draw_quad(){
-        System.out.println( size.x + " " + size.y );
         if( textureName == "" ){
             System.out.println("No texture set");
             return;
@@ -93,11 +92,12 @@ public class DrawableEntity extends MovableEntity {
         glPushMatrix();
         glTranslatef(position.x, position.y, 0);
 
-        glColor3f(color.x, color.y, color.z);
+        glColor4f(color.x, color.y, color.z, color.w);
+
 
         glDisable(GL_TEXTURE_2D);
 
-        glPointSize(16);
+        glPointSize(5);
 
         glBegin(GL_POINTS);
             glVertex2f(0.0f, 0.0f);
