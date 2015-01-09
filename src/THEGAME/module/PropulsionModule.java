@@ -10,7 +10,7 @@ public class PropulsionModule extends VehicleModule {
     public PropulsionModule() {
         super();
         type = "GenericPropulsion";
-        this.setTexture("wood-wheel", "res/wood_wheel.png");
+        this.setTexture("wood-wheel2", "res/wood_wheel2.png");
     }
 
     public void update(float dt){
