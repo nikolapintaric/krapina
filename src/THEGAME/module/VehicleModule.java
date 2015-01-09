@@ -36,12 +36,12 @@ public class VehicleModule extends DrawableEntity {
     }
 
 
-    public void checkSelected(Vector2f pos, EventData event) {
+    public void checkSelected(Vector2f pos,EventData event) {
         //System.out.println("check " + type);
         float x0 = pos.x + posx * moduleW;
         float y0 = pos.y + posy * moduleH;
-        if (x0 <= event.position.x && event.position.x < x0 + moduleW * w &&
-                y0 <= event.position.y && event.position.y < y0 + moduleH * h) {
+        if (x0 <= event.position.x && event.position.x < x0 + size.x &&
+                y0 <= event.position.y && event.position.y < y0 + size.y) {
             selected = true;
         } else {
             selected = false;
