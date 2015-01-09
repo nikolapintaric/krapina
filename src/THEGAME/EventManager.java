@@ -11,11 +11,23 @@ import java.awt.*;
  */
 public class EventManager {
 
+    private static int lastX = -1;
+    private static int lastY = -1;
+
     public static void init() {
 
     }
 
     public static boolean pollEvent(EventData event) {
+        // fixed mouse move event (doesnt lag), but seems not to be safe
+        if (Mouse.getX() != lastX || Mouse.getY() != lastY) {
+            event.type = EventTypes.MOUSE_MOVED;
+            event.position = new Vector2f(Mouse.getX(), Mouse.getY());
+            lastX = Mouse.getX();
+            lastY = Mouse.getY();
+            return true;
+        }
+        // other "normal" events
         while (Mouse.next()) {
             // clicks
             if (Mouse.getEventButtonState()) {
@@ -32,7 +44,7 @@ public class EventManager {
             // mouse move
             if (Mouse.getEventDX() == 0 || Mouse.getEventDY() == 0) {
                 event.type = EventTypes.MOUSE_MOVED;
-                event.position = new Vector2f(Mouse.getEventX(), Mouse.getEventY());
+                event.position = new Vector2f(Mouse.getX(), Mouse.getY());
                 return true;
             }
         }
