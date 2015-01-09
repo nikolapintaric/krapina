@@ -12,8 +12,4 @@ public class FuelModule extends VehicleModule {
         type = "GenericFuelTank";
         this.setTexture("steel-tank", "res/steel_tank.png");
     }
-
-    public void draw() {
-        draw_quad();
-    }
 }

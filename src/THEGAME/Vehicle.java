@@ -71,12 +71,12 @@ public class Vehicle extends MovableEntity {
         }
     }
 
-    /*
+
     public void onMouseMove(EventData event) {
         for (VehicleModule m: modules) {
-            m.checkSelected(event);
+            m.checkSelected(position, event);
         }
-    }*/
+    }
 
     public void update(float dt){
         for(int i = 0; i < modules.size(); i++){
