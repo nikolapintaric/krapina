@@ -1,0 +1,4 @@
+[tonko]
+	age = 18
+	height = 184
+	smarts = over9000

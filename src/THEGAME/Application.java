@@ -1,5 +1,6 @@
 package THEGAME;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
@@ -37,6 +38,10 @@ public class Application {
         AssetManager.addTexture("background", "res/background_2.png");
         AssetManager.useTexture("background");
         AssetManager.addFont("arial", "bok");
+
+        ConfigManager config = new ConfigManager();
+        config.parseFile("res/input.txt");
+        config.writeToFile("res/test.txt");
     }
 
     public void run() {

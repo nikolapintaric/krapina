@@ -20,6 +20,7 @@ public class VehicleModule extends DrawableEntity {
     public VehicleModule() {
         super();
         type = new String();
+        w = h = 1;
     }
 
 

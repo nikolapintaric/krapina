@@ -3,6 +3,7 @@ package THEGAME;
 import THEGAME.module.VehicleModule;
 import static org.lwjgl.opengl.GL11.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -28,10 +29,11 @@ public class Vehicle extends MovableEntity {
         this.position.set(100.0f, 100.0f);
     }
 
-    public boolean addPart(int x, int y, VehicleModule part) {
+    public boolean addModule(VehicleModule part) {
         for (int i = 0; i < part.w; ++i) {
             for (int j = 0; j < part.h; ++j) {
-                if (matrix[i+x][j+y] != null) {
+                if (matrix[i + part.posx][j + part.posy] != null) {
+                    System.out.println("Error addding part " + part.type + "; (" +(i+part.posx)+ ", " +(j+part.posy)+ ") already occupied");
                     return false;
                 }
             }
@@ -39,21 +41,23 @@ public class Vehicle extends MovableEntity {
 
         for (int i = 0; i < part.w; ++i) {
             for (int j = 0; j < part.h; ++j) {
-                matrix[i+x][j+y] = part;
+                matrix[i + part.posx][j + part.posy] = part;
             }
         }
-        part.posx = x;
-        part.posy = y;
+
 
         modules.add(part);
 
         return true;
     }
 
-    public void removePart(int x, int y) {
-        // jel ovo radi?
+    public void removeModule(int x, int y) {
+        // testirano, jednom, radilo
+        if (matrix[x][y] == null) return;
         x = matrix[x][y].posx;
         y = matrix[x][y].posy;
+
+        System.out.println("Removing " + matrix[x][y].type + "from (" + x + ", " + y + ")");
 
         // I don't even know...
         modules.remove(matrix[x][y]);
