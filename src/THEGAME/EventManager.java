@@ -2,6 +2,7 @@ package THEGAME;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
 
@@ -31,8 +32,7 @@ public class EventManager {
             // mouse move
             if (Mouse.getEventDX() == 0 || Mouse.getEventDY() == 0) {
                 event.type = EventTypes.MOUSE_MOVED;
-                event.x = Mouse.getEventX();
-                event.y = Mouse.getEventY();
+                event.position = new Vector2f(Mouse.getEventX(), Mouse.getEventY());
                 return true;
             }
         }
