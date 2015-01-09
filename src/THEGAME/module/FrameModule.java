@@ -7,7 +7,7 @@ public class FrameModule extends VehicleModule {
 
     //public float durability;
 
-    FrameModule() {
+    public FrameModule() {
         super();
         type = "GenericFrame";
         this.setTexture("wood-frame", "res/wood_frame.png");

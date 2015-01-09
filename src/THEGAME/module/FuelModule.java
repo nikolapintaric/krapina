@@ -7,9 +7,13 @@ public class FuelModule extends VehicleModule {
 
     public float capacity, used;
 
-    FuelModule() {
+    public FuelModule() {
         super();
         type = "GenericFuelTank";
         this.setTexture("steel-tank", "res/steel_tank.png");
+    }
+
+    public void draw() {
+        draw_quad();
     }
 }

@@ -9,7 +9,7 @@ public class EngineModule extends VehicleModule {
     // consumption - fuel po sekundi
     // power - kolicina... necega... po jedinici iskoristenog fuela
 
-    EngineModule() {
+    public EngineModule() {
         super();
         type = "GenericEngine";
     }

@@ -1,5 +1,6 @@
 package THEGAME;
 
+import THEGAME.module.FuelModule;
 import THEGAME.module.PropulsionModule;
 import THEGAME.particle.Emitter;
 import static org.lwjgl.opengl.GL11.*;
