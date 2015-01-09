@@ -5,7 +5,7 @@ package THEGAME.module;
  */
 public class ModuleFactory {
 
-    public static VehicleModule createModule(ModuleEnum classId, int _w, int _h){
+    public static VehicleModule createModule(ModuleEnum classId, int _x, int _y){
         VehicleModule tmp = null;
         if(classId == ModuleEnum.PROPULSIONMODULE){
             tmp = new PropulsionModule();
@@ -23,8 +23,8 @@ public class ModuleFactory {
             tmp = new CoolerModule();
         }
 
-        tmp.w = _w; tmp.h = _h;
-        tmp.position.set( VehicleModule.moduleW * tmp.w, VehicleModule.moduleH * tmp.h );
+        tmp.posx = _x; tmp.posy = _y;
+        tmp.position.set( VehicleModule.moduleW * tmp.posx, VehicleModule.moduleH * tmp.posy );
         tmp.size.set( VehicleModule.moduleW, VehicleModule.moduleH );
 
         return tmp;
