@@ -21,7 +21,7 @@ public class GameState extends State {
     }
 
     public void init() {
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 2);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 50);
         vehicle = new Vehicle();
 
         PropulsionModule.moduleH = 50;

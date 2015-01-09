@@ -26,7 +26,9 @@ public class Particle extends DrawableEntity{
     }
 
     public void draw(){
-        if(!alive) return;
+        if(!alive) {
+            return;
+        }
         this.drawPoint();
     }
 
