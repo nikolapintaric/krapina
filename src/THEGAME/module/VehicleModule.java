@@ -40,8 +40,8 @@ public class VehicleModule extends DrawableEntity {
         //System.out.println("check " + type);
         float x0 = pos.x + posx * moduleW;
         float y0 = pos.y + posy * moduleH;
-        if (x0 <= event.position.x && event.position.x <= x0 + moduleW * w &&
-                y0 <= event.position.y && event.position.y <= y0 + moduleH * h) {
+        if (x0 <= event.position.x && event.position.x < x0 + moduleW * w &&
+                y0 <= event.position.y && event.position.y < y0 + moduleH * h) {
             selected = true;
         } else {
             selected = false;
