@@ -3,6 +3,7 @@ package THEGAME;
 import THEGAME.module.VehicleModule;
 import static org.lwjgl.opengl.GL11.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -50,10 +51,13 @@ public class Vehicle extends MovableEntity {
         return true;
     }
 
-    public void removePart(int x, int y) {
-        // jel ovo radi?
+    public void removeModule(int x, int y) {
+        // testirano, jednom, radilo
+        if (matrix[x][y] == null) return;
         x = matrix[x][y].posx;
         y = matrix[x][y].posy;
+
+        System.out.println("Removing " + matrix[x][y].type + "from (" + x + ", " + y + ")");
 
         // I don't even know...
         modules.remove(matrix[x][y]);
