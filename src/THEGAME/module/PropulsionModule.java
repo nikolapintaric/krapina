@@ -7,13 +7,18 @@ import THEGAME.DrawableEntity;
  */
 public class PropulsionModule extends VehicleModule {
 
-    PropulsionModule() {
+    public PropulsionModule() {
         super();
         type = "GenericPropulsion";
         this.setTexture("wood-wheel", "res/wood_wheel.png");
     }
 
     public void update(float dt){
-        rotation += 10 * dt;
+        rotation -= 100 * dt;
+        System.out.println("Updatam wheel");
+    }
+
+    public void draw(){
+        draw_quad();
     }
 }

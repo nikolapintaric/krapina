@@ -22,7 +22,7 @@ public class Vehicle extends MovableEntity {
             matrix[i] = new VehicleModule[size + 1];
         }
 
-
+        modules = new ArrayList<VehicleModule>();
     }
 
     public boolean addPart(int x, int y, VehicleModule part) {
@@ -67,6 +67,12 @@ public class Vehicle extends MovableEntity {
     public void update(float dt){
         for(int i = 0; i < modules.size(); i++){
             modules.get(i).update(dt);
+        }
+    }
+
+    public void draw(){
+        for(int i = 0; i < modules.size(); i++){
+            modules.get(i).draw();
         }
     }
 
