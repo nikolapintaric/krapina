@@ -15,7 +15,7 @@ public class GameState extends State {
     }
 
     public void init() {
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 100);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 1000);
     }
 
     public void update(float dt) {

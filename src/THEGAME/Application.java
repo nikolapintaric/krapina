@@ -54,6 +54,7 @@ public class Application {
 
             StateManager.getState().draw();
 
+
             EventData event = new EventData();
             while (EventManager.pollEvent(event)) {
                 //System.out.println(event.type + " " + event.keyCode);
@@ -86,7 +87,7 @@ public class Application {
             e.printStackTrace();
         }
 
-        glEnable(GL_TEXTURE_2D);
+
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -97,6 +98,8 @@ public class Application {
         glOrtho(0, Krapina.width, 0, Krapina.height, 1, -1);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
+
+
 
 
     }

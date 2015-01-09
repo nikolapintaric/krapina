@@ -88,9 +88,15 @@ public class DrawableEntity extends MovableEntity {
 
         glColor3f(color.x, color.y, color.z);
 
-        glBegin(GL_POINTS);
-            glVertex2f(position.x, position.y);
+        glDisable(GL_TEXTURE_2D);
 
+        glPointSize(16);
+
+        glBegin(GL_POINTS);
+            glVertex2f(0.0f, 0.0f);
+        glEnd();
+
+        glPopMatrix();
 
     }
 
