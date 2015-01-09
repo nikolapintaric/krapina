@@ -30,10 +30,10 @@ public class BounceAffector extends Affector {
         for(DrawableEntity en:particles){
             if(collide(en.position)){
                 float dot = (Vector2f.dot(en.velocity, normal));
-                Vector2f y = new Vector2f(normal.x * Math.abs(dot) * bounceRatio, normal.y * Math.abs(dot) * bounceRatio);
-                Vector2f x = new Vector2f();
+                Vector2f y = new Vector2f(normal.x * Math.abs(dot) * bounceRatio + rand()*2, normal.y * Math.abs(dot) * bounceRatio + rand() * 10);
+                Vector2f x = new Vector2f(rand(), rand());
                 Vector2f.sub(en.velocity, new Vector2f(normal.x * dot, normal.y * dot), x);
-                en.velocity = new Vector2f(0,0);
+                en.velocity = new Vector2f(0, 0);
                 Vector2f.add(x, y, en.velocity);
                 Helper.print(x);
             }
