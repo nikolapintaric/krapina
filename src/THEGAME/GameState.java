@@ -29,11 +29,33 @@ public class GameState extends State {
         PropulsionModule.moduleH = 50;
         PropulsionModule.moduleW = 50;
 
-        VehicleModule tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 0, 0);
+        VehicleModule tmp;
+        tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 0, 0);
         vehicle.addModule(tmp);
-        tmp = ModuleFactory.createModule(ModuleEnum.ENGINEMODULE, 1, 1);
+        tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 2, 0);
         vehicle.addModule(tmp);
-        tmp = ModuleFactory.createModule(ModuleEnum.FUELMODULE, 0, 1);
+        tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 4, 0);
+        vehicle.addModule(tmp);
+        
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 0, 1);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 1, 1);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 2, 1);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 3, 1);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 4, 1);
+        vehicle.addModule(tmp);
+        
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 0, 2);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FRAMEMODULE, 4, 2);
+        vehicle.addModule(tmp);
+        
+        tmp = ModuleFactory.createModule(ModuleEnum.ENGINEMODULE, 1, 2);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FUELMODULE, 3, 2);
         vehicle.addModule(tmp);
     }
 
