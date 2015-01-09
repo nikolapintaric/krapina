@@ -22,20 +22,19 @@ public class BounceAffector extends Affector {
         this.bounceRatio = bounceRatio;
     }
 
-    private boolean collide(Vector2f pos){
-        return Vector2f.dot(new Vector2f(pos.x - position.x, pos.y - position.y), normal) <= 0;
+    private float height(Vector2f pos){
+        return Vector2f.dot(new Vector2f(pos.x - position.x, pos.y - position.y), normal);
     }
 
     public void update(ArrayList<DrawableEntity> particles, float dt){
         for(DrawableEntity en:particles){
-            if(collide(en.position)){
+            if(height(en.position)<=0 && height(en.position) > - 20){
                 float dot = (Vector2f.dot(en.velocity, normal));
                 Vector2f y = new Vector2f(normal.x * Math.abs(dot) * bounceRatio + rand()*2, normal.y * Math.abs(dot) * bounceRatio + rand() * 10);
                 Vector2f x = new Vector2f(rand(), rand());
                 Vector2f.sub(en.velocity, new Vector2f(normal.x * dot, normal.y * dot), x);
                 en.velocity = new Vector2f(0, 0);
                 Vector2f.add(x, y, en.velocity);
-                //Helper.print(x);
             }
         }
 
