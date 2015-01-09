@@ -29,13 +29,14 @@ public class Application {
         StateManager.pushState(new MenuState());
         StateManager.pushState(new GameState());
 
-        StateManager.changeState("GameState");
+        StateManager.changeState("MenuState");
 
         // aktivni STATE ce biti zadnji dodani - game state
 
         // isprobavanje assetmanagera
         AssetManager.addTexture("background", "res/background_2.png");
         AssetManager.useTexture("background");
+        AssetManager.addFont("arial", "bok");
     }
 
     public void run() {
