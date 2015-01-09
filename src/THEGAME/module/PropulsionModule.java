@@ -15,7 +15,6 @@ public class PropulsionModule extends VehicleModule {
 
     public void update(float dt){
         rotation -= 100 * dt;
-        System.out.println("Updatam wheel");
     }
 
     public void draw(){

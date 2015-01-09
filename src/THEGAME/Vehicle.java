@@ -1,6 +1,7 @@
 package THEGAME;
 
 import THEGAME.module.VehicleModule;
+import static org.lwjgl.opengl.GL11.*;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ public class Vehicle extends MovableEntity {
         }
 
         modules = new ArrayList<VehicleModule>();
+
+        this.position.set(100.0f, 100.0f);
     }
 
     public boolean addPart(int x, int y, VehicleModule part) {
@@ -71,9 +74,14 @@ public class Vehicle extends MovableEntity {
     }
 
     public void draw(){
+        glPushMatrix();
+
+        glTranslated(this.position.x, this.position.y, 0.0f);
         for(int i = 0; i < modules.size(); i++){
             modules.get(i).draw();
         }
+
+        glPopMatrix();
     }
 
     public float mass, power;
