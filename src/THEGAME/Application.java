@@ -30,7 +30,9 @@ public class Application {
         StateManager.pushState(new MenuState());
         StateManager.pushState(new GameState());
 
+        StateManager.changeState("MenuState");
         StateManager.changeState("GameState");
+
 
         // aktivni STATE ce biti zadnji dodani - game state
 

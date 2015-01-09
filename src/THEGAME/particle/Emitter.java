@@ -24,6 +24,7 @@ public class Emitter {
         particles = new ArrayList<DrawableEntity>();
         affectors = new ArrayList<Affector>();
         this.position = position;
+        position.y += 100;
         lastParticle = System.nanoTime() / 1000000.0f;
         this.milisecondSpeed = milisecondSpeed;
         System.out.println("Emitter constructed");
@@ -31,9 +32,13 @@ public class Emitter {
         for(int i=0; i<maxParticles; i++){
             particles.add(new Particle(false, 0));
         }
+        addAffector(new TimeAffector());
+        Vector2f normal = new Vector2f(0, 1);
+        normal.normalise();
+        addAffector(new BounceAffector(new Vector2f(position.x, 250), normal, 0.8f));
+        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f)));
         addAffector(new PositionAffector());
-        addAffector(new FadeAffector(0.7f));
-        addAffector(new ForceAffector(new Vector2f(position)));
+        addAffector(new ColorAffector(1.0f));
     }
 
     public void addParticle(Particle particle){
@@ -54,7 +59,7 @@ public class Emitter {
         }
         while(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
             lastParticle = lastParticle + milisecondSpeed;
-            addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat()-0.5f) * 1.2f,random.nextFloat() - 0.2f), true, 10));
+            addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 3, random.nextFloat() * 10), true, 5.0f));
         }
     }
 
