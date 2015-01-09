@@ -58,7 +58,6 @@ public class DrawableEntity extends MovableEntity {
     }
 
     public void draw_quad(){
-        System.out.println( size.x + " " + size.y );
         if( textureName == "" ){
             System.out.println("No texture set");
             return;
