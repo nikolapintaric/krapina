@@ -22,6 +22,9 @@ public class VehicleModule extends DrawableEntity {
         type = new String();
         w = h = 1;
     }
+/*
+    public void checkSelected() {
 
+    }*/
 
 }
