@@ -17,7 +17,4 @@ public class PropulsionModule extends VehicleModule {
         rotation -= 100 * dt;
     }
 
-    public void draw(){
-        draw_quad();
-    }
 }

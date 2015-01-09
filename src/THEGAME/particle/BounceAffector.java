@@ -35,7 +35,7 @@ public class BounceAffector extends Affector {
                 Vector2f.sub(en.velocity, new Vector2f(normal.x * dot, normal.y * dot), x);
                 en.velocity = new Vector2f(0, 0);
                 Vector2f.add(x, y, en.velocity);
-                Helper.print(x);
+                //Helper.print(x);
             }
         }
 
