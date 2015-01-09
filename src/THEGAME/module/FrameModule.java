@@ -10,5 +10,6 @@ public class FrameModule extends VehicleModule {
     FrameModule() {
         super();
         type = "GenericFrame";
+        this.setTexture("wood-frame", "res/wood_frame.png");
     }
 }
