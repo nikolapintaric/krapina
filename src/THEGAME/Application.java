@@ -29,6 +29,8 @@ public class Application {
         StateManager.pushState(new MenuState());
         StateManager.pushState(new GameState());
 
+        StateManager.changeState("MenuState");
+
         // aktivni STATE ce biti zadnji dodani - game state
 
         // isprobavanje assetmanagera
