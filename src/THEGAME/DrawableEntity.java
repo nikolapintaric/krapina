@@ -10,6 +10,7 @@ import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.Color;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import org.lwjgl.util.vector.Vector4f;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -18,7 +19,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class DrawableEntity extends MovableEntity {
 
     public Vector2f size;
-    public Vector3f color;
+    public Vector4f color;
     private String textureName="";
 
 
@@ -26,11 +27,11 @@ public class DrawableEntity extends MovableEntity {
         this(new Vector2f(0.0f, 0.0f));
     }
 
-    public DrawableEntity(Vector2f pos, Vector2f size, Vector3f color){
+    public DrawableEntity(Vector2f pos, Vector2f size, Vector4f color){
         this(pos, size, color, new Vector2f(0.0f, 0.0f));
     }
 
-    public DrawableEntity(Vector2f pos, Vector2f size, Vector3f color, Vector2f vel){
+    public DrawableEntity(Vector2f pos, Vector2f size, Vector4f color, Vector2f vel){
         super();
         this.velocity = vel;
         this.size = size;
@@ -39,7 +40,7 @@ public class DrawableEntity extends MovableEntity {
     }
 
     public DrawableEntity(Vector2f pos){
-        this(pos, new Vector2f(0.0f, 0.0f), new Vector3f(1.0f, 1.0f, 1.0f));
+        this(pos, new Vector2f(0.0f, 0.0f), new Vector4f(1.0f, 1.0f, 1.0f, 1.0f));
     }
 
     public void setTexture(String _textureName, String texturePath){
@@ -94,9 +95,15 @@ public class DrawableEntity extends MovableEntity {
 
         glColor3f(color.x, color.y, color.z);
 
-        glBegin(GL_POINTS);
-            glVertex2f(position.x, position.y);
+        glDisable(GL_TEXTURE_2D);
 
+        glPointSize(16);
+
+        glBegin(GL_POINTS);
+            glVertex2f(0.0f, 0.0f);
+        glEnd();
+
+        glPopMatrix();
 
     }
 
