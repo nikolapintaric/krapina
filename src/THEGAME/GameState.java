@@ -1,6 +1,9 @@
 package THEGAME;
 
+import THEGAME.module.ModuleEnum;
+import THEGAME.module.ModuleFactory;
 import THEGAME.module.PropulsionModule;
+import THEGAME.module.VehicleModule;
 import THEGAME.particle.Emitter;
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
@@ -20,10 +23,12 @@ public class GameState extends State {
     public void init() {
         emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 2);
         vehicle = new Vehicle();
-        PropulsionModule tmp = new PropulsionModule();
-        tmp.position.set(100.0f, 100.0f);
-        tmp.size.set(100.0f, 100.0f);
-        vehicle.addPart( 0, 0, tmp );
+
+        PropulsionModule.moduleH = 50;
+        PropulsionModule.moduleW = 50;
+
+        VehicleModule tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 0, 0);
+        vehicle.addPart( tmp.w, tmp.h, tmp );
     }
 
     public void update(float dt) {

@@ -7,6 +7,8 @@ import THEGAME.DrawableEntity;
  */
 public class VehicleModule extends DrawableEntity {
 
+    public static float moduleW, moduleH;
+
     public String type;
     public int w, h;
     public int posx, posy;
