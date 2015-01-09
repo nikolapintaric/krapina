@@ -18,13 +18,13 @@ public class MenuState extends State {
 
     public void init() {
         cont = new Container("root", null);
-        cont.size.set(300, 200);
-        cont.position.set(100, 100);
+        cont.size.set(400, 200);
+        cont.position.set(200, 200);
+
 
         Container haha = new UIButton("rr");
         cont.addChild(haha);
-        haha.size.set(100,60);
-        haha.position.set(20, 60);
+        haha.position.set(125, 100);
 
     }
 
