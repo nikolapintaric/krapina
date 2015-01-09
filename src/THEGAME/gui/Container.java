@@ -1,4 +1,4 @@
-package THEGAME.particle;
+package THEGAME.gui;
 
 import THEGAME.DrawableEntity;
 import static org.lwjgl.opengl.GL11.*;
@@ -6,7 +6,6 @@ import static org.lwjgl.opengl.GL11.*;
 import THEGAME.EventData;
 import THEGAME.EventTypes;
 import org.lwjgl.util.vector.Vector2f;
-import sun.java2d.pipe.hw.AccelDeviceEventNotifier;
 
 import java.util.ArrayList;
 
@@ -23,6 +22,8 @@ public class Container extends DrawableEntity {
     public Vector2f absPosition;
 
     protected boolean hovered;
+    protected boolean pressed;
+    protected boolean focused;
 
     public Container(String theName, Container theParent) {
         name = theName;
@@ -80,9 +81,30 @@ public class Container extends DrawableEntity {
         }
     }
 
+    public void mouseLeftPressed() {
+        if (hovered) pressed = true;
+        for (Container child: mChildren) {
+            child.mouseLeftPressed();
+        }
+    }
+
+    public void mouseLeftReleased() {
+        if (hovered && pressed) {
+            System.out.println("You click me! Youuuuuuu clicliclicliclick me! yay");
+        }
+        pressed = false;
+        for (Container child: mChildren) {
+            child.mouseLeftReleased();
+        }
+    }
+
     public void handleEvent(EventData event) {
         if (event.type == EventTypes.MOUSE_MOVED)
             mouseMoved(event.position.x, event.position.y);
+        if (event.type == EventTypes.MOUSE_LEFT_PRESSED)
+            mouseLeftPressed();
+        if (event.type == EventTypes.MOUSE_LEFT_RELEASED)
+            mouseLeftReleased();
     }
 
 }

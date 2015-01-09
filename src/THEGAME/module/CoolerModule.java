@@ -7,7 +7,7 @@ public class CoolerModule extends VehicleModule {
     // TODO: implementirati heat -> negativni heatRate?
 
 
-    CoolerModule() {
+    public CoolerModule() {
         super();
         type = "GenericCooler";
     }

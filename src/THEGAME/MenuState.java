@@ -1,6 +1,7 @@
 package THEGAME;
 
-import THEGAME.particle.Container;
+import THEGAME.gui.Container;
+import THEGAME.gui.UIButton;
 
 /**
  * Created by tonkosi on 07.01.15..
@@ -20,7 +21,7 @@ public class MenuState extends State {
         cont.size.set(300, 200);
         cont.position.set(100, 100);
 
-        Container haha = new Container("rr", null);
+        Container haha = new UIButton("rr");
         cont.addChild(haha);
         haha.size.set(100,60);
         haha.position.set(20, 60);
