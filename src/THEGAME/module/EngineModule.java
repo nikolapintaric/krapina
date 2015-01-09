@@ -12,5 +12,8 @@ public class EngineModule extends VehicleModule {
     public EngineModule() {
         super();
         type = "GenericEngine";
+        w = 2;
+        h = 1;
+        this.setTexture("engine", "res/engine.png");
     }
 }

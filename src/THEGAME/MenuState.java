@@ -1,6 +1,6 @@
 package THEGAME;
 
-import THEGAME.particle.Container;
+import THEGAME.gui.Container;
 
 /**
  * Created by tonkosi on 07.01.15..
