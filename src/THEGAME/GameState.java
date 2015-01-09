@@ -28,7 +28,11 @@ public class GameState extends State {
         PropulsionModule.moduleW = 50;
 
         VehicleModule tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 0, 0);
-        vehicle.addPart( tmp.w, tmp.h, tmp );
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.PROPULSIONMODULE, 1, 1);
+        vehicle.addModule(tmp);
+        tmp = ModuleFactory.createModule(ModuleEnum.FUELMODULE, 0, 1);
+        vehicle.addModule(tmp);
     }
 
     public void update(float dt) {

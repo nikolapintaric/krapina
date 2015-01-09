@@ -28,10 +28,11 @@ public class Vehicle extends MovableEntity {
         this.position.set(100.0f, 100.0f);
     }
 
-    public boolean addPart(int x, int y, VehicleModule part) {
+    public boolean addModule(VehicleModule part) {
         for (int i = 0; i < part.w; ++i) {
             for (int j = 0; j < part.h; ++j) {
-                if (matrix[i+x][j+y] != null) {
+                if (matrix[i + part.posx][j + part.posy] != null) {
+                    System.out.println("Error addding part " + part.type + "; (" +(i+part.posx)+ ", " +(j+part.posy)+ ") already occupied");
                     return false;
                 }
             }
@@ -39,11 +40,10 @@ public class Vehicle extends MovableEntity {
 
         for (int i = 0; i < part.w; ++i) {
             for (int j = 0; j < part.h; ++j) {
-                matrix[i+x][j+y] = part;
+                matrix[i + part.posx][j + part.posy] = part;
             }
         }
-        part.posx = x;
-        part.posy = y;
+
 
         modules.add(part);
 
