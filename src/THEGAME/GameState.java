@@ -1,6 +1,8 @@
 package THEGAME;
 
+import THEGAME.module.PropulsionModule;
 import THEGAME.particle.Emitter;
+import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 
 /**
@@ -8,6 +10,7 @@ import org.lwjgl.util.vector.Vector2f;
  */
 public class GameState extends State {
     public Emitter emitter;
+    public Vehicle vehicle;
 
     public GameState() {
         super("GameState");
@@ -15,17 +18,30 @@ public class GameState extends State {
     }
 
     public void init() {
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 1000);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 100);
+        vehicle = new Vehicle();
+        PropulsionModule tmp = new PropulsionModule();
+        tmp.position.set(100.0f, 100.0f);
+        tmp.size.set(100.0f, 100.0f);
+        vehicle.addPart( 0, 0, tmp );
     }
 
     public void update(float dt) {
         BackgroundClass.update(dt);
         emitter.update(dt);
+        vehicle.update(dt);
     }
 
     public void draw() {
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        glPushMatrix();
+
         BackgroundClass.draw();
         emitter.draw();
+        vehicle.draw();
+
+        glPopMatrix();
     }
 
     public void handleEvent(EventData event) {

@@ -54,13 +54,20 @@ public class DrawableEntity extends MovableEntity {
     }
 
     public void draw(){
+        draw_quad();
+    }
+
+    public void draw_quad(){
+        System.out.println( size.x + " " + size.y );
         if( textureName == "" ){
             System.out.println("No texture set");
             return;
         }
 
         glPushMatrix();
-        glTranslatef(position.x, position.y, 0);
+        glTranslatef(position.x + size.x/2, position.y + size.y/2, 0.0f);
+        glRotatef(rotation, 0.0f, 0.0f, 1.0f);
+        glTranslated(-size.x/2, -size.y/2, 0.0f);
 
         glEnable(GL_TEXTURE_2D);
         AssetManager.useTexture(textureName);
