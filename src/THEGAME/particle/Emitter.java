@@ -15,7 +15,7 @@ public class Emitter {
     private ArrayList<Affector> affectors;
     private int firstFree=0;
     public Vector2f position;
-    public int maxParticles = 100;
+    public int maxParticles = 1000;
     public float milisecondSpeed;
     public float lastParticle;
     public Random random;
@@ -32,12 +32,13 @@ public class Emitter {
             particles.add(new Particle(false, 0));
         }
         addAffector(new PositionAffector());
+        addAffector(new FadeAffector(0.7f));
+        addAffector(new ForceAffector(new Vector2f(position)));
     }
 
     public void addParticle(Particle particle){
 
         particles.set(firstFree, particle);
-        System.out.println(firstFree);
         firstFree++;
         if(firstFree == maxParticles - 1)
             firstFree = 0;
@@ -51,9 +52,9 @@ public class Emitter {
         for(Affector a:affectors){
             a.update(particles, dt);
         }
-        if(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
-            lastParticle = System.nanoTime() / 1000000.0f;
-            addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 1.0f), new Vector2f((random.nextFloat()-0.5f),random.nextFloat() - 0.5f), true, 10));
+        while(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
+            lastParticle = lastParticle + milisecondSpeed;
+            addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat()-0.5f) * 1.2f,random.nextFloat() - 0.2f), true, 10));
         }
     }
 
