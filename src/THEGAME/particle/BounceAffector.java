@@ -57,25 +57,6 @@ public class BounceAffector extends Affector {
             }
         }
 
-        /*
-        glColor3f(1.0f, 0, 0);
-        glBegin((GL_LINES));
-        glVertex2f(left.x, left.y);
-        glVertex2f(right.x, right.y);
-        glEnd();
-        glBegin((GL_LINES));
-            glVertex2f(50, 50);
-            glVertex2f(normal.x * 50 + 50, normal.y * 50 + 50);
-        glEnd();
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        glPointSize(20);
-        glBegin(GL_POINTS);
-            glVertex2f(position.x, position.y);
-        glEnd();
-        glPointSize(1);
-        */
-
     }
 
 }

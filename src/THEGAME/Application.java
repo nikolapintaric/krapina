@@ -1,8 +1,6 @@
 package THEGAME;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
@@ -25,7 +23,7 @@ public class Application {
 
         StateManager.init();
         AssetManager.init();
-        BackgroundClass.init();
+        Background.init();
 
         StateManager.pushState(new MenuState());
         StateManager.pushState(new GameState());
@@ -61,6 +59,11 @@ public class Application {
 
 
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glOrtho(0, Krapina.width, 0, Krapina.height, 1, -1);
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
 
             StateManager.getState().draw();
 
@@ -75,8 +78,8 @@ public class Application {
             StateManager.getState().update(1.0f / 60);
 
 
-            /*BackgroundClass.draw();
-            BackgroundClass.update( 1.0f/60 );
+            /*Background.draw();
+            Background.update( 1.0f/60 );
 */
             Display.update();
             Display.sync(60);
@@ -101,16 +104,11 @@ public class Application {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-
-
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(0, Krapina.width, 0, Krapina.height, 1, -1);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-
-
-
 
     }
 

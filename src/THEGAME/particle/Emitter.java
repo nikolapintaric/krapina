@@ -1,6 +1,7 @@
 package THEGAME.particle;
 
 import THEGAME.DrawableEntity;
+import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector4f;
 
@@ -64,10 +65,12 @@ public class Emitter {
     }
 
     public void draw(){
+        glPushMatrix();
+        glTranslatef(this.position.x, this.position.y, 0.0f);
         for(DrawableEntity en:particles){
             en.draw();
         }
-
+        glPopMatrix();
     }
 
     public void addRectBounce(Vector2f bottomLeft, Vector2f size, float width, float bounceRatio){

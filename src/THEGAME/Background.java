@@ -1,12 +1,18 @@
 package THEGAME;
 
 
+import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 
-public class BackgroundClass {
+public class Background extends Entity{
 
     private static LayerClass layer;
 	private static DrawableEntity sky[], mountains[], road[];
+
+	public Background(){
+		super();
+		init();
+	}
 
 	public static void init(){
         layer = new LayerClass();
@@ -48,7 +54,7 @@ public class BackgroundClass {
 		layer.addEntity(road[1]);
     }
 
-	public static void update(float dt){
+	public void update(float dt){
 		layer.update(dt);
 		for(int i = 0; i < 2; i++){
 			sky[i].position.setX(sky[i].position.getX() - 50.0f * dt);
@@ -61,8 +67,13 @@ public class BackgroundClass {
 		}
 	}
 
-	public static void draw(){
+	public void draw(){
+		glPushMatrix();
+
+		glTranslatef(this.position.x, this.position.y, 0.0f);
 		layer.draw();
+
+		glPopMatrix();
 	}
 
 //1280 720

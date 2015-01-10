@@ -82,12 +82,13 @@ public class Vehicle extends MovableEntity {
         for(int i = 0; i < modules.size(); i++){
             modules.get(i).update(dt);
         }
+        this.position.setX( this.position.getX() + 100.0f * dt );
     }
 
     public void draw(){
         glPushMatrix();
 
-        glTranslated(this.position.x, this.position.y, 0.0f);
+        glTranslated(this.position.x + 100.0f, this.position.y + 100.0f, 0.0f);
         for(int i = 0; i < modules.size(); i++){
             modules.get(i).draw();
         }
