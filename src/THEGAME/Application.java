@@ -1,6 +1,7 @@
 package THEGAME;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
@@ -53,6 +54,9 @@ public class Application {
     public void loop() {
         Debugger.log("Application.loop()");
 
+        /*long currentTime, lastTime;
+        currentTime = lastTime = System.currentTimeMillis();*/
+
         // ovo bi se kasnije moglo zamijeniti s while (window opened())
         // ili necim slicno tome
         while (!Display.isCloseRequested()) {
@@ -74,15 +78,21 @@ public class Application {
                 StateManager.getState().handleEvent(event);
             }
 
+            /*currentTime = System.currentTimeMillis();
+            if( (currentTime - lastTime) > 1000/60 ){
+                float dt = (float)(currentTime - lastTime) / 1000.0f;
+                StateManager.getState().update( dt );
+                lastTime = currentTime;
+            }*/
 
-            StateManager.getState().update(1.0f / 60);
-
+            StateManager.getState().update(1.0f/60);
 
             /*Background.draw();
             Background.update( 1.0f/60 );
 */
             Display.update();
             Display.sync(60);
+
         }
         Display.destroy();
     }
