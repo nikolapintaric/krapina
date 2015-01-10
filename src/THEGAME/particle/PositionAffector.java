@@ -10,6 +10,10 @@ import java.util.ArrayList;
  */
 public class PositionAffector extends Affector{
 
+    public PositionAffector(){
+        super();
+    }
+
     public void update(ArrayList<DrawableEntity> particles, float dt){
         for(DrawableEntity p:particles){
             Vector2f.add(p.position, new Vector2f(p.velocity.x * dt, p.velocity.y * dt), p.position);

@@ -20,6 +20,7 @@ public class BounceAffector extends Affector {
     public float width = 10f;
 
     public BounceAffector(Vector2f left, Vector2f rigth, float width, float bounceRatio){
+        super();
         this.left = left;
         this.right = rigth;
         this.width = width;

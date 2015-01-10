@@ -39,6 +39,7 @@ public class Emitter {
         addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 10, 0.4f);
         addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f*60)));
         addAffector(new PositionAffector());
+        addAffector(new AttractorAffector(new Vector2f(225, 400), 100000f));
     }
 
     public void addParticle(Particle particle){
@@ -74,10 +75,10 @@ public class Emitter {
     }
 
     public void addRectBounce(Vector2f bottomLeft, Vector2f size, float width, float bounceRatio){
-        //addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
+        addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
         addAffector(new BounceAffector(new Vector2f(bottomLeft.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), width, bounceRatio));
         addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y), width, bounceRatio));
-        //addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
 
 
     }
