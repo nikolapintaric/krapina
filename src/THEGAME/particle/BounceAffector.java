@@ -4,8 +4,8 @@ import THEGAME.DrawableEntity;
 import THEGAME.Helper;
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
-import org.lwjgl.util.vector.Vector4f;
 
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 /**
@@ -15,12 +15,14 @@ public class BounceAffector extends Affector {
     public Vector2f normal;
     public float bounceRatio;
     private Vector2f left;
-    private Vector2f rigth;
+    private Vector2f right;
+    private Line2D line;
     public float width = 10f;
 
     public BounceAffector(Vector2f left, Vector2f rigth, float width, float bounceRatio){
+        super();
         this.left = left;
-        this.rigth = rigth;
+        this.right = rigth;
         this.width = width;
         this.bounceRatio = bounceRatio;
         position = new Vector2f((left.x + rigth.x) / 2.0f, (left.y + rigth.y) / 2.0f);
@@ -29,8 +31,7 @@ public class BounceAffector extends Affector {
         Helper.rotateVector(normal, (float) (Math.PI / 2.0f));
 
         normal.normalise();
-        System.out.println("normal");
-        Helper.print(normal);
+        line = new Line2D.Float(left.x, left.y, rigth.x, rigth.y);
     }
 
     private float height(Vector2f pos){
@@ -46,32 +47,16 @@ public class BounceAffector extends Affector {
         Vector2f.add(x, y, velocity);
     }
 
+
     public void update(ArrayList<DrawableEntity> particles, float dt){
         for(DrawableEntity en:particles){
-            if(height(en.position)<=0 && height(en.position) > - 10 && en.position.x <= rigth.x && en.position.x >= left.x){
+
+            if(line.intersectsLine(new Line2D.Float(en.position.x, en.position.y, en.position.x + en.velocity.x * dt * 1.5f, en.position.y + en.velocity.y * dt * 1.5f))){
                 bounce(en.velocity);
+
 
             }
         }
-        glPushMatrix();
-        glTranslated(position.x, position.y, 0.0f);
-        glColor3f(1.0f, 0, 0);
-        glBegin((GL_LINES));
-        glVertex2f(left.x, left.y);
-        glVertex2f(rigth.x, rigth.y);
-        glEnd();
-        glBegin((GL_LINES));
-            glVertex2f(50, 50);
-            glVertex2f(normal.x * 50 + 50, normal.y * 50 + 50);
-        glEnd();
-        glColor3f(1.0f, 1.0f, 1.0f);
-
-        glPointSize(20);
-        glBegin(GL_POINTS);
-            glVertex2f(position.x, position.y);
-        glEnd();
-        glPointSize(1);
-        glPopMatrix();
 
     }
 

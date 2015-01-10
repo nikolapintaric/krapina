@@ -37,8 +37,9 @@ public class Emitter {
         Vector2f normal = new Vector2f(0, 1);
         normal.normalise();
         addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 10, 0.4f);
-        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f)));
+        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f*60)));
         addAffector(new PositionAffector());
+        addAffector(new AttractorAffector(new Vector2f(225, 400), 100000f));
     }
 
     public void addParticle(Particle particle){
@@ -60,7 +61,7 @@ public class Emitter {
         lastParticle += dt * 1000;
         while(lastParticle > milisecondSpeed){
             lastParticle -= milisecondSpeed;
-            addParticle(new Particle(new Vector2f(600, 350), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 2 - 6f, random.nextFloat() * 3), true, 5.0f));
+            addParticle(new Particle(new Vector2f(600, 350), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 120 - 360f, random.nextFloat() * 180), true, 5.0f));
         }
     }
 
@@ -74,10 +75,10 @@ public class Emitter {
     }
 
     public void addRectBounce(Vector2f bottomLeft, Vector2f size, float width, float bounceRatio){
-        //addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
+        addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
         addAffector(new BounceAffector(new Vector2f(bottomLeft.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), width, bounceRatio));
         addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y), width, bounceRatio));
-        //addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
 
 
     }

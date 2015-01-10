@@ -12,6 +12,7 @@ public class FadeAffector extends Affector {
     public float speed;
 
     public FadeAffector(float speed){
+        super();
         this.speed = speed;
     }
 
