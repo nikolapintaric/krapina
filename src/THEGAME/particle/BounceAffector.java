@@ -53,7 +53,8 @@ public class BounceAffector extends Affector {
 
             }
         }
-
+        glPushMatrix();
+        glTranslated(position.x, position.y, 0.0f);
         glColor3f(1.0f, 0, 0);
         glBegin((GL_LINES));
         glVertex2f(left.x, left.y);
@@ -70,7 +71,7 @@ public class BounceAffector extends Affector {
             glVertex2f(position.x, position.y);
         glEnd();
         glPointSize(1);
-
+        glPopMatrix();
 
     }
 
