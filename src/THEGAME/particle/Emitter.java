@@ -35,7 +35,7 @@ public class Emitter {
         addAffector(new TimeAffector());
         Vector2f normal = new Vector2f(0, 1);
         normal.normalise();
-        addAffector(new BounceAffector(new Vector2f(position.x, 250), normal, 0.8f));
+        addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 10, 0.4f);
         addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f)));
         addAffector(new PositionAffector());
     }
@@ -59,7 +59,7 @@ public class Emitter {
         lastParticle += dt * 1000;
         while(lastParticle > milisecondSpeed){
             lastParticle -= milisecondSpeed;
-            addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 3, random.nextFloat() * 10), true, 5.0f));
+            addParticle(new Particle(new Vector2f(600, 350), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 2 - 6f, random.nextFloat() * 3), true, 5.0f));
         }
     }
 
@@ -67,6 +67,16 @@ public class Emitter {
         for(DrawableEntity en:particles){
             en.draw();
         }
+
+    }
+
+    public void addRectBounce(Vector2f bottomLeft, Vector2f size, float width, float bounceRatio){
+        //addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y), width, bounceRatio));
+        //addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
+
+
     }
 
 

@@ -23,7 +23,7 @@ public class GameState extends State {
     }
 
     public void init() {
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 1.0f);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5);
         vehicle = new Vehicle();
 
         PropulsionModule.moduleH = 50;
@@ -62,14 +62,12 @@ public class GameState extends State {
     }
 
     public void update(float dt) {
-        System.out.println("GameState update");
         BackgroundClass.update(dt);
         emitter.update(dt);
         vehicle.update(dt);
     }
 
     public void draw() {
-        System.out.println("GameState draw");
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         glPushMatrix();
