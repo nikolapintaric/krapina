@@ -2,6 +2,8 @@ package THEGAME.manager;
 
 import THEGAME.EventData;
 import THEGAME.EventTypes;
+import THEGAME.Krapina;
+import javafx.scene.Camera;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Vector2f;
@@ -29,9 +31,11 @@ public class EventManager {
         // fixed mouse move event (doesnt lag), but seems not to be safe
         if (Mouse.getX() != lastX || Mouse.getY() != lastY) {
             event.type = EventTypes.MOUSE_MOVED;
-            if( correctForCamera ){
-                float xRatio;
-                float yRation;
+            if(correctForCamera){
+                float xRatio = Krapina.width / CameraManager.currentSize.x;
+                float yRation = Krapina.height / CameraManager.currentSize.y;
+                event.position = new Vector2f(Mouse.getX() / xRatio + CameraManager.relPosition.x - CameraManager.currentSize.x / 2,
+                        Mouse.getY() / yRation + CameraManager.relPosition.y - CameraManager.currentSize.y / 2);
             } else {
                 event.position = new Vector2f(Mouse.getX(), Mouse.getY());
             }
@@ -58,7 +62,14 @@ public class EventManager {
             // mouse move
             if (Mouse.getEventDX() == 0 || Mouse.getEventDY() == 0) {
                 event.type = EventTypes.MOUSE_MOVED;
-                event.position = new Vector2f(Mouse.getX(), Mouse.getY());
+                if(correctForCamera){
+                    float xRatio = Krapina.width / CameraManager.currentSize.x;
+                    float yRation = Krapina.height / CameraManager.currentSize.y;
+                    event.position = new Vector2f(Mouse.getX() / xRatio + CameraManager.relPosition.x - CameraManager.currentSize.x / 2,
+                            Mouse.getY() / yRation + CameraManager.relPosition.y - CameraManager.currentSize.y / 2);
+                } else {
+                    event.position = new Vector2f(Mouse.getX(), Mouse.getY());
+                }
                 return true;
             }
         }

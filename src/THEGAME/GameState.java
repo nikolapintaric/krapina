@@ -1,6 +1,7 @@
 package THEGAME;
 
 import THEGAME.manager.CameraManager;
+import THEGAME.manager.EventManager;
 import THEGAME.module.ModuleEnum;
 import THEGAME.module.ModuleFactory;
 import THEGAME.module.PropulsionModule;
@@ -30,7 +31,8 @@ public class GameState extends State {
     public void init() {
         CameraManager.init();
         CameraManager.setRelPosition(new Vector2f(Krapina.width / 2, Krapina.height / 2));
-        CameraManager.setZoom(1.0f);
+        CameraManager.setZoom(1.5f);
+        EventManager.setCorrectForCamera(true);
 
         emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5);
         vehicle = new Vehicle();

@@ -13,8 +13,7 @@ public class CameraManager {
     public static Vector4f currentRect;
     public static float zoom;
     public static Vector2f relPosition; // relative to bounding rectangle, center of camera
-
-    private static Vector2f currentSize;
+    public static Vector2f currentSize;
 
     public static void init(){
         boundingRect = new Vector4f(0.0f, 0.0f, 0.0f, 0.0f);
