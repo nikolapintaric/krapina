@@ -6,9 +6,8 @@ import THEGAME.module.PropulsionModule;
 import THEGAME.module.VehicleModule;
 import THEGAME.particle.Emitter;
 import static org.lwjgl.opengl.GL11.*;
-import org.lwjgl.util.vector.Vector2f;
 
-import java.awt.event.MouseAdapter;
+import org.lwjgl.util.vector.Vector2f;
 
 /**
  * Created by tonkosi on 07.01.15..
@@ -16,6 +15,7 @@ import java.awt.event.MouseAdapter;
 public class GameState extends State {
     public Emitter emitter;
     public Vehicle vehicle;
+    public Background background;
 
     public GameState() {
         super("GameState");
@@ -25,6 +25,7 @@ public class GameState extends State {
     public void init() {
         emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5);
         vehicle = new Vehicle();
+        background = new Background();
 
         PropulsionModule.moduleH = 50;
         PropulsionModule.moduleW = 50;
@@ -57,20 +58,28 @@ public class GameState extends State {
         vehicle.addModule(tmp);
         tmp = ModuleFactory.createModule(ModuleEnum.FUELMODULE, 3, 2);
         vehicle.addModule(tmp);
+
+        System.out.println("GameState Init complete");
     }
 
     public void update(float dt) {
-        BackgroundClass.update(dt);
+        background.update(dt);
         emitter.update(dt);
         vehicle.update(dt);
+
+        background.position.set(vehicle.position);
+        emitter.position.set(vehicle.position);
     }
 
     public void draw() {
+        glMatrixMode(GL_PROJECTION);
+        glTranslated(-vehicle.position.x, -vehicle.position.y, 0.0f);
+
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         glPushMatrix();
 
-        BackgroundClass.draw();
+        background.draw();
         emitter.draw();
         vehicle.draw();
 

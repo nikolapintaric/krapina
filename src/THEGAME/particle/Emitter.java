@@ -1,6 +1,7 @@
 package THEGAME.particle;
 
 import THEGAME.DrawableEntity;
+import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector4f;
 
@@ -25,7 +26,7 @@ public class Emitter {
         affectors = new ArrayList<Affector>();
         this.position = position;
         position.y += 100;
-        lastParticle = System.nanoTime() / 1000000.0f;
+        lastParticle = 0.0f;
         this.milisecondSpeed = milisecondSpeed;
         System.out.println("Emitter constructed");
         random = new Random();
@@ -35,9 +36,10 @@ public class Emitter {
         addAffector(new TimeAffector());
         Vector2f normal = new Vector2f(0, 1);
         normal.normalise();
-        addAffector(new BounceAffector(new Vector2f(position.x, 250), normal, 0.8f));
-        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f)));
+        addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 10, 0.4f);
+        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f*60)));
         addAffector(new PositionAffector());
+        addAffector(new AttractorAffector(new Vector2f(225, 400), 100000f));
     }
 
     public void addParticle(Particle particle){
@@ -56,16 +58,29 @@ public class Emitter {
         for(Affector a:affectors){
             a.update(particles, dt);
         }
-        while(System.nanoTime() / 1000000.0f - lastParticle > milisecondSpeed){
-            lastParticle = lastParticle + milisecondSpeed;
-            addParticle(new Particle(new Vector2f(position), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 3, random.nextFloat() * 10), true, 5.0f));
+        lastParticle += dt * 1000;
+        while(lastParticle > milisecondSpeed){
+            lastParticle -= milisecondSpeed;
+            addParticle(new Particle(new Vector2f(600, 350), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 120 - 360f, random.nextFloat() * 180), true, 5.0f));
         }
     }
 
     public void draw(){
+        glPushMatrix();
+        glTranslatef(this.position.x, this.position.y, 0.0f);
         for(DrawableEntity en:particles){
             en.draw();
         }
+        glPopMatrix();
+    }
+
+    public void addRectBounce(Vector2f bottomLeft, Vector2f size, float width, float bounceRatio){
+        addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y), width, bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
+
+
     }
 
 

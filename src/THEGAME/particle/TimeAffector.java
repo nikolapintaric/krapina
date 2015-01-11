@@ -9,6 +9,11 @@ import java.util.ArrayList;
  */
 public class TimeAffector extends Affector {
 
+
+    public TimeAffector(){
+        super();
+    }
+
     public void update(ArrayList<DrawableEntity> particles, float dt){
         for(DrawableEntity en:particles){
             if(en instanceof Particle && ((Particle) en).alive){

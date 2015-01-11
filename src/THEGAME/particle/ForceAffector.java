@@ -15,7 +15,12 @@ public class ForceAffector extends Affector {
 
 
     public ForceAffector(Vector2f force){
+        this();
         this.force = force;
+    }
+
+    public ForceAffector(){
+        super();
     }
 
 
