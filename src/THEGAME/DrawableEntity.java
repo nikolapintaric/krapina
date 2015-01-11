@@ -3,17 +3,11 @@ package THEGAME; /**
  */
 
 
-import java.io.IOException;
-
 import static org.lwjgl.opengl.GL11.*;
 
-import org.lwjgl.util.Color;
+import THEGAME.manager.AssetManager;
 import org.lwjgl.util.vector.Vector2f;
-import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.ResourceLoader;
 
 
 public class DrawableEntity extends MovableEntity {

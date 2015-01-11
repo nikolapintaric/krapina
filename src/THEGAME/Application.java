@@ -1,7 +1,10 @@
 package THEGAME;
 
+import THEGAME.manager.AssetManager;
+import THEGAME.manager.ConfigManager;
+import THEGAME.manager.EventManager;
+import THEGAME.manager.StateManager;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;

@@ -1,17 +1,14 @@
 package THEGAME.gui;
 
-import THEGAME.AssetManager;
+import THEGAME.manager.AssetManager;
 //import sun.font.TrueTypeFont;
-import THEGAME.StateManager;
+import THEGAME.manager.StateManager;
 import THEGAME.module.Utils;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.TrueTypeFont;
 
 
-import java.awt.*;
-
 import static org.lwjgl.opengl.GL11.*;
-import org.newdawn.slick.Color;
 
 /**
  * Created by tonkosi on 09.01.15..
