@@ -82,6 +82,9 @@ public class GameState extends State {
         emitter.position.set(vehicle.position);
 
         CameraManager.setBoundingRect(new Vector4f(vehicle.position.x, vehicle.position.y, vehicle.position.x + Krapina.width, vehicle.position.y + Krapina.height));
+        CameraManager.moveRelPosition(new Vector2f(0.1f, 0.1f));
+        CameraManager.setTargetZoom(1.0f);
+        CameraManager.update();
     }
 
     public void draw() {
