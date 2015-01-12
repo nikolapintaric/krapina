@@ -39,7 +39,7 @@ public class Emitter {
         addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 10, 0.4f);
         addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f*60)));
         addAffector(new PositionAffector());
-        addAffector(new AttractorAffector(new Vector2f(225, 400), 100000f));
+        //addAffector(new AttractorAffector(new Vector2f(225, 400), 10f));
     }
 
     public void addParticle(Particle particle){

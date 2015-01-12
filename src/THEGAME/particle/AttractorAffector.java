@@ -22,7 +22,7 @@ public class AttractorAffector extends ForceAffector {
             Vector2f vel = new Vector2f((position.x - p.position.x),(position.y - p.position.y));
             float len = vel.lengthSquared();
             vel.normalise();
-            vel.scale(dt * force / len * 200);
+            vel.scale(dt * force / len * 2000000);
 
             Vector2f.add(p.velocity, vel, p.velocity);
 

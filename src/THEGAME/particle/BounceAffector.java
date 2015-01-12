@@ -41,7 +41,7 @@ public class BounceAffector extends Affector {
     private void bounce(Vector2f velocity){
         float dot = (Vector2f.dot(velocity, normal));
         Vector2f y = new Vector2f(normal.x * Math.abs(dot) * bounceRatio + rand()*2, normal.y * Math.abs(dot) * bounceRatio + rand() * 10);
-        Vector2f x = new Vector2f(0, 0);
+        Vector2f x = new Vector2f(rand(), rand());
         Vector2f.sub(velocity, new Vector2f(normal.x * dot, normal.y * dot), x);
         velocity.set(0, 0);
         Vector2f.add(x, y, velocity);
