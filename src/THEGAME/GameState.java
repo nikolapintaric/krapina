@@ -1,5 +1,7 @@
 package THEGAME;
 
+import THEGAME.manager.CameraManager;
+import THEGAME.manager.EventManager;
 import THEGAME.module.ModuleEnum;
 import THEGAME.module.ModuleFactory;
 import THEGAME.module.PropulsionModule;
@@ -7,7 +9,11 @@ import THEGAME.module.VehicleModule;
 import THEGAME.particle.Emitter;
 import static org.lwjgl.opengl.GL11.*;
 
+import javafx.scene.Camera;
 import org.lwjgl.util.vector.Vector2f;
+import org.lwjgl.util.vector.Vector4f;
+
+import java.util.Vector;
 
 /**
  * Created by tonkosi on 07.01.15..
@@ -23,6 +29,11 @@ public class GameState extends State {
     }
 
     public void init() {
+        CameraManager.init();
+        CameraManager.setRelPosition(new Vector2f(Krapina.width / 2, Krapina.height / 2));
+        CameraManager.setZoom(1.5f);
+        EventManager.setCorrectForCamera(true);
+
         emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5);
         vehicle = new Vehicle();
         background = new Background();
@@ -69,11 +80,18 @@ public class GameState extends State {
 
         background.position.set(vehicle.position);
         emitter.position.set(vehicle.position);
+
+        CameraManager.setBoundingRect(new Vector4f(vehicle.position.x, vehicle.position.y, vehicle.position.x + Krapina.width, vehicle.position.y + Krapina.height));
+        CameraManager.moveRelPosition(new Vector2f(0.1f, 0.1f));
+        CameraManager.setTargetZoom(1.0f);
+        CameraManager.update();
     }
 
     public void draw() {
         glMatrixMode(GL_PROJECTION);
-        glTranslated(-vehicle.position.x, -vehicle.position.y, 0.0f);
+
+        //glTranslated(-vehicle.position.x, -vehicle.position.y, 0.0f);
+        CameraManager.applyProjectionTransformations();
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();

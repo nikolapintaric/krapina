@@ -1,4 +1,6 @@
-package THEGAME;
+package THEGAME.manager;
+
+import THEGAME.State;
 
 import java.util.ArrayList;
 

@@ -20,4 +20,14 @@ public class Entity {
     public void draw(){
     }
 
+    public void handleEvent(EventData event) {
+        /*
+        if (event.type == EventTypes.MOUSE_MOVED)
+            mouseMoved(event.position.x, event.position.y);
+        if (event.type == EventTypes.MOUSE_LEFT_PRESSED)
+            mouseLeftPressed();
+        if (event.type == EventTypes.MOUSE_LEFT_RELEASED)
+            mouseLeftReleased();
+        */
+    }
 }

@@ -1,4 +1,6 @@
-package THEGAME;
+package THEGAME.manager;
+
+import THEGAME.Section;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +14,7 @@ import java.util.Map;
  */
 public class ConfigManager {
 
-    private HashMap<String,Section> sections;
+    private HashMap<String, Section> sections;
     private String path;
 
     public ConfigManager(){

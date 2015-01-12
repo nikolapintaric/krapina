@@ -1,4 +1,4 @@
-package THEGAME;
+package THEGAME.manager;
 
 //import org.newdawn.slick.Font;
 import java.awt.Font;
