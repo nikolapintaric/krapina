@@ -105,9 +105,8 @@ public class GameState extends State {
     }
 
     public void handleEvent(EventData event) {
-        System.out.println("EVENT DATA DOLAZI U GRAD: " + event.type);
-        if (event.type == 1) {
-            System.out.println(event.position.x + " " + event.position.y);
+        if (event.type == EventTypes.MOUSE_MOVED) {
+            System.out.println("mouse position: " + event.position.x + ", " + event.position.y);
             vehicle.onMouseMove(event);
         }
     }
