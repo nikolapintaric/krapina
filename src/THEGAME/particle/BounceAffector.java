@@ -6,6 +6,8 @@ import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
 /**
@@ -17,13 +19,13 @@ public class BounceAffector extends Affector {
     private Vector2f left;
     private Vector2f right;
     private Line2D line;
-    public float width = 10f;
 
-    public BounceAffector(Vector2f left, Vector2f rigth, float width, float bounceRatio){
+
+
+    public BounceAffector(Vector2f left, Vector2f rigth, float bounceRatio){
         super();
         this.left = left;
         this.right = rigth;
-        this.width = width;
         this.bounceRatio = bounceRatio;
         position = new Vector2f((left.x + rigth.x) / 2.0f, (left.y + rigth.y) / 2.0f);
         normal = Vector2f.sub(rigth, position, normal);

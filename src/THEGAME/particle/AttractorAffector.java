@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class AttractorAffector extends ForceAffector {
     public float force;
+    public float radius = 1000;
 
     public AttractorAffector(Vector2f pos, float force){
         super();
@@ -21,6 +22,7 @@ public class AttractorAffector extends ForceAffector {
         for(DrawableEntity p:particles){
             Vector2f vel = new Vector2f((position.x - p.position.x),(position.y - p.position.y));
             float len = vel.lengthSquared();
+            len = Math.max(len, radius);
             vel.normalise();
             vel.scale(dt * force / len * 2000000);
 

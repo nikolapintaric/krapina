@@ -34,7 +34,7 @@ public class GameState extends State {
         CameraManager.setZoom(1.5f);
         EventManager.setCorrectForCamera(true);
 
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5f);
         vehicle = new Vehicle();
         background = new Background();
 

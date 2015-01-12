@@ -15,6 +15,7 @@ public class DrawableEntity extends MovableEntity {
     public Vector2f size;
     public Vector4f color;
     private String textureName="";
+    public float pointSize=1;
 
 
     public DrawableEntity(){
@@ -91,7 +92,7 @@ public class DrawableEntity extends MovableEntity {
 
         glDisable(GL_TEXTURE_2D);
 
-        glPointSize(5);
+        glPointSize(pointSize);
 
         glBegin(GL_POINTS);
             glVertex2f(0.0f, 0.0f);

@@ -20,6 +20,7 @@ public class Particle extends DrawableEntity{
         super(pos, new Vector2f(0.0f, 0.0f), color, vel);
         this.alive = alive;
         this.decay = decay;
+        pointSize = 4;
     }
     public Particle(boolean alive, float decay){
         this(new Vector2f(0.0f, 0.0f), new Vector4f(1.0f, 1.0f, 1.0f, 1.0f), new Vector2f(0.0f, 0.0f), alive, decay);

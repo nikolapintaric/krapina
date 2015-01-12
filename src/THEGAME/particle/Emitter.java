@@ -16,7 +16,7 @@ public class Emitter {
     private ArrayList<Affector> affectors;
     private int firstFree=0;
     public Vector2f position;
-    public int maxParticles = 1000;
+    public int maxParticles = 10000;
     public float milisecondSpeed;
     public float lastParticle;
     public Random random;
@@ -36,8 +36,8 @@ public class Emitter {
         addAffector(new TimeAffector());
         Vector2f normal = new Vector2f(0, 1);
         normal.normalise();
-        addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 10, 0.4f);
-        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f*60)));
+        addRectBounce(new Vector2f(100, 150), new Vector2f(250, 100), 0.4f);
+        addAffector(new ForceAffector(new Vector2f(0.0f, -9.81f*30)));
         addAffector(new PositionAffector());
         //addAffector(new AttractorAffector(new Vector2f(225, 400), 10f));
     }
@@ -61,7 +61,7 @@ public class Emitter {
         lastParticle += dt * 1000;
         while(lastParticle > milisecondSpeed){
             lastParticle -= milisecondSpeed;
-            addParticle(new Particle(new Vector2f(600, 350), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 120 - 360f, random.nextFloat() * 180), true, 5.0f));
+            addParticle(new Particle(new Vector2f(600, 350), new Vector4f(1.0f, random.nextFloat(), 0.0f, 0.6f), new Vector2f((random.nextFloat() - 0.5f) * 120 - 300f, random.nextFloat() * 180), true, 50));
         }
     }
 
@@ -74,11 +74,11 @@ public class Emitter {
         glPopMatrix();
     }
 
-    public void addRectBounce(Vector2f bottomLeft, Vector2f size, float width, float bounceRatio){
-        addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), width, bounceRatio));
-        addAffector(new BounceAffector(new Vector2f(bottomLeft.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), width, bounceRatio));
-        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y), width, bounceRatio));
-        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, width, bounceRatio));
+    public void addRectBounce(Vector2f bottomLeft, Vector2f size, float bounceRatio){
+        addAffector(new BounceAffector(bottomLeft, new Vector2f(bottomLeft.x, bottomLeft.y + size.y), bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y + size.y), new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bounceRatio));
+        addAffector(new BounceAffector(new Vector2f(bottomLeft.x + size.x, bottomLeft.y), bottomLeft, bounceRatio));
 
 
     }

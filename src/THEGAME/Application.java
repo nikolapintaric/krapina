@@ -5,6 +5,7 @@ import THEGAME.manager.ConfigManager;
 import THEGAME.manager.EventManager;
 import THEGAME.manager.StateManager;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
@@ -15,6 +16,8 @@ import static org.lwjgl.opengl.GL11.*;
 
 
 public class Application {
+    public float dt = 1 / 60.0f, lastFrame, lastTime;
+    public int fps;
 
     public Application() {
 
@@ -57,20 +60,13 @@ public class Application {
     public void loop() {
         Debugger.log("Application.loop()");
 
-        /*long currentTime, lastTime;
-        currentTime = lastTime = System.currentTimeMillis();*/
 
-        // ovo bi se kasnije moglo zamijeniti s while (window opened())
-        // ili necim slicno tome
-        while (!Display.isCloseRequested()) {
+        boolean running = true;
+        while (!Display.isCloseRequested() && running) {
 
 
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            glMatrixMode(GL_PROJECTION);
-            glLoadIdentity();
-            glOrtho(0, Krapina.width, 0, Krapina.height, 1, -1);
-            glMatrixMode(GL_MODELVIEW);
-            glLoadIdentity();
+            glClear(GL_COLOR_BUFFER_BIT);
+
 
             StateManager.getState().draw();
 
@@ -79,6 +75,8 @@ public class Application {
             while (EventManager.pollEvent(event)) {
                 //System.out.println(event.type + " " + event.keyCode);
                 StateManager.getState().handleEvent(event);
+                if(event.type == EventTypes.KEY_PRESSED && event.keyCode == Keyboard.KEY_ESCAPE)
+                    running = false;
             }
 
             /*currentTime = System.currentTimeMillis();
@@ -88,13 +86,16 @@ public class Application {
                 lastTime = currentTime;
             }*/
 
-            StateManager.getState().update(1.0f/60);
+            StateManager.getState().update(1 / 60.0f);
 
             /*Background.draw();
             Background.update( 1.0f/60 );
 */
+
+            fps();
             Display.update();
             Display.sync(60);
+
 
         }
         Display.destroy();
@@ -123,6 +124,17 @@ public class Application {
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
 
+    }
+
+    private void fps(){
+        dt = System.nanoTime() / 1000000000.0f - lastFrame / 1000.0f;
+        fps++;
+        lastFrame = System.nanoTime() / 1000000.0f;
+        if(System.nanoTime() / 1000000.0f - lastTime > 1000){
+            System.out.println(fps);
+            fps = 0;
+            lastTime = System.nanoTime() / 1000000.0f;
+        }
     }
 
     public void kill() {
