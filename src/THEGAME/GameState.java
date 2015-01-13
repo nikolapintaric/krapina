@@ -34,9 +34,11 @@ public class GameState extends State {
         CameraManager.setZoom(1.5f);
         EventManager.setCorrectForCamera(true);
 
-        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 5f);
+        emitter = new Emitter(new Vector2f(Krapina.width / 2, Krapina.height / 2), 20.0f);
         vehicle = new Vehicle();
         background = new Background();
+
+        background.position = new Vector2f(vehicle.position);
 
         PropulsionModule.moduleH = 50;
         PropulsionModule.moduleW = 50;
@@ -78,11 +80,10 @@ public class GameState extends State {
         emitter.update(dt);
         vehicle.update(dt);
 
-        background.position.set(vehicle.position);
+        background.targetX = vehicle.position.x;
         emitter.position.set(vehicle.position);
 
         CameraManager.setBoundingRect(new Vector4f(vehicle.position.x, vehicle.position.y, vehicle.position.x + Krapina.width, vehicle.position.y + Krapina.height));
-        CameraManager.moveRelPosition(new Vector2f(0.1f, 0.1f));
         CameraManager.setTargetZoom(1.0f);
         CameraManager.update();
     }
@@ -105,6 +106,7 @@ public class GameState extends State {
     }
 
     public void handleEvent(EventData event) {
+        vehicle.handleEvent(event);
         if (event.type == EventTypes.MOUSE_MOVED) {
             System.out.println("mouse position: " + event.position.x + ", " + event.position.y);
             vehicle.onMouseMove(event);

@@ -6,15 +6,16 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class Background extends Entity{
 
-    private static LayerClass layer;
-	private static DrawableEntity sky[], mountains[], road[];
+    private LayerClass layer;
+	private DrawableEntity sky[], mountains[], road[];
+	public float targetX;
 
 	public Background(){
 		super();
 		init();
 	}
 
-	public static void init(){
+	public void init(){
         layer = new LayerClass();
 
 		sky = new DrawableEntity[2];
@@ -56,15 +57,18 @@ public class Background extends Entity{
 
 	public void update(float dt){
 		layer.update(dt);
+
+		float dPosition = (targetX - this.position.x) / 1;
 		for(int i = 0; i < 2; i++){
-			sky[i].position.setX(sky[i].position.getX() - 50.0f * dt);
-			mountains[i].position.setX(mountains[i].position.getX() - 100.0f * dt);
-			road[i].position.setX(road[i].position.getX() - 150.0f * dt);
+			sky[i].position.setX(sky[i].position.getX() - dPosition);
+			mountains[i].position.setX(mountains[i].position.getX() - dPosition);
+			road[i].position.setX(road[i].position.getX() - dPosition);
 
 			if(sky[i].position.getX() < -sky[i].size.getX()) sky[i].position.setX( sky[i].position.getX() + sky[i].size.getX() * 2 - 1);
 			if(mountains[i].position.getX() < -mountains[i].size.getX()) mountains[i].position.setX( mountains[i].position.getX() + mountains[i].size.getX() * 2 - 1);
 			if(road[i].position.getX() < -road[i].size.getX()) road[i].position.setX( road[i].position.getX() + road[i].size.getX() * 2 - 1);
 		}
+		this.position.x += dPosition;
 	}
 
 	public void draw(){

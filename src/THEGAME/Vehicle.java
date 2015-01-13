@@ -1,10 +1,13 @@
 package THEGAME;
 
+import THEGAME.module.EngineModule;
 import THEGAME.module.VehicleModule;
+import com.sun.xml.internal.ws.api.pipe.Engine;
 import org.lwjgl.util.vector.Vector2f;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +20,7 @@ public class Vehicle extends MovableEntity {
 
     public VehicleModule[][] matrix;
     public ArrayList<VehicleModule> modules;
+    public float currentSpeed = 0.0f;
 
     public Vehicle() {
         super();
@@ -82,8 +86,11 @@ public class Vehicle extends MovableEntity {
     public void update(float dt){
         for(int i = 0; i < modules.size(); i++){
             modules.get(i).update(dt);
+            if(modules.get(i).type == "GenericEngine"){
+                this.currentSpeed = ((EngineModule)modules.get(i)).speed;
+            }
         }
-        this.position.setX( this.position.getX() + 100.0f * dt );
+        this.position.setX( this.position.getX() + currentSpeed * dt );
     }
 
     public void draw(){
@@ -95,6 +102,12 @@ public class Vehicle extends MovableEntity {
         }
 
         glPopMatrix();
+    }
+
+    public void handleEvent(EventData event){
+        for(int i = 0; i < modules.size(); i++){
+            modules.get(i).handleEvent(event);
+        }
     }
 
     public float mass, power;

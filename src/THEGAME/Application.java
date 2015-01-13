@@ -30,7 +30,6 @@ public class Application {
 
         StateManager.init();
         AssetManager.init();
-        Background.init();
 
         StateManager.pushState(new MenuState());
         StateManager.pushState(new GameState());
