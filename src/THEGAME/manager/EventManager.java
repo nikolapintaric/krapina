@@ -45,6 +45,12 @@ public class EventManager {
 
             return true;
         }
+        int wheelDelta = Mouse.getDWheel();
+        if(wheelDelta != 0){
+            event.type = EventTypes.MOUSE_WHEEL_MOVED;
+            event.delta = wheelDelta;
+            return true;
+        }
         // other "normal" events
         while (Mouse.next()) {
             // clicks

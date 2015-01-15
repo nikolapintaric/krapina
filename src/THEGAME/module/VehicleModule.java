@@ -46,7 +46,7 @@ public class VehicleModule extends DrawableEntity {
         } else {
             selected = false;
         }
-        if (selected) System.out.println(type + " selected!");
+//        if (selected) System.out.println(type + " selected!");
     }
 
     @Override

@@ -2,6 +2,8 @@ package THEGAME.manager;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import THEGAME.EventData;
+import THEGAME.EventTypes;
 import javafx.scene.Camera;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector4f;
@@ -19,12 +21,15 @@ public class CameraManager {
     public static Vector2f relPosition; // relative to bounding rectangle, center of camera
     public static Vector2f currentSize;
 
+    private static boolean[] keyState;
+
     public static void init(){
         boundingRect = new Vector4f(0.0f, 0.0f, 0.0f, 0.0f);
         currentRect = new Vector4f(0.0f, 0.0f, 0.0f, 0.0f);
         zoom = targetZoom = 1.0f;
         relPosition = new Vector2f(0.0f, 0.0f);
         currentSize = new Vector2f(0.0f, 0.0f);
+        keyState = new boolean[200];
     }
 
     public static void setBoundingRect(Vector4f boundingRect) {
@@ -49,8 +54,17 @@ public class CameraManager {
         CameraManager.targetZoom = targetZoom;
     }
 
-    public static void update(){
-        zoom += (targetZoom - zoom) / 20;
+    public static void update(float dt){
+        float panSpeed = 700.0f;
+
+        //zoom += ((targetZoom - zoom) / 10) * dt * 1000.0f; FUN CAMERA
+        zoom += ((targetZoom - zoom) / 10) * dt * 100.0f;
+
+        if(keyState[17]) moveRelPosition(new Vector2f(0.0f, panSpeed * dt));
+        if(keyState[30]) moveRelPosition(new Vector2f(-panSpeed * dt, 0.0f));
+        if(keyState[31]) moveRelPosition(new Vector2f(0.0f, -panSpeed * dt));
+        if(keyState[32]) moveRelPosition(new Vector2f(panSpeed * dt, 0.0f));
+
         updateCurrentRect();
     }
 
@@ -73,5 +87,19 @@ public class CameraManager {
 
         glOrtho(0, currentSize.x, 0, currentSize.y, 1, -1);
         glTranslatef(-(currentRect.x), -(currentRect.y), 0.0f);
+    }
+
+    public static void handleEvent(EventData event){
+        if(event.type == EventTypes.KEY_PRESSED){
+            keyState[event.keyCode] = true;
+        }
+        if(event.type == EventTypes.KEY_RELEASED){
+            keyState[event.keyCode] = false;
+        }
+
+        if(event.type == EventTypes.MOUSE_WHEEL_MOVED){
+            setTargetZoom(zoom + ((float)event.delta * 0.003f * zoom));
+         //   System.out.println(event.delta);
+        }
     }
 }

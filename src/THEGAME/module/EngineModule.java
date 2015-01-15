@@ -33,7 +33,6 @@ public class EngineModule extends VehicleModule {
             fuel -= consumption;
             speed += 20.0f;
         }
-        System.out.println(speed);
     }
 
     public void handleEvent(EventData event){

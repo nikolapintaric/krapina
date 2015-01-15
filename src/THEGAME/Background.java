@@ -60,8 +60,8 @@ public class Background extends Entity{
 
 		float dPosition = (targetX - this.position.x) / 1;
 		for(int i = 0; i < 2; i++){
-			sky[i].position.setX(sky[i].position.getX() - dPosition);
-			mountains[i].position.setX(mountains[i].position.getX() - dPosition);
+			sky[i].position.setX(sky[i].position.getX() - dPosition * 0.1f);
+			mountains[i].position.setX(mountains[i].position.getX() - dPosition * 0.3f);
 			road[i].position.setX(road[i].position.getX() - dPosition);
 
 			if(sky[i].position.getX() < -sky[i].size.getX()) sky[i].position.setX( sky[i].position.getX() + sky[i].size.getX() * 2 - 1);

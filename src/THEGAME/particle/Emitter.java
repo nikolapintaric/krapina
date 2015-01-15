@@ -16,7 +16,7 @@ public class Emitter {
     private ArrayList<Affector> affectors;
     private int firstFree=0;
     public Vector2f position;
-    public int maxParticles = 10000;
+    public int maxParticles = 100;
     public float milisecondSpeed;
     public float lastParticle;
     public Random random;
